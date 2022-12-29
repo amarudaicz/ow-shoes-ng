@@ -1,0 +1,69 @@
+<hr style="margin: 20px 0; " />
+
+<div class="product-selected">
+
+  <p>
+    <span class="selected-item">
+
+      <span class="selected-color"
+        >Color: <b>{{ swatchColor.color_arg }} </b>
+      </span>
+
+      <span class="selected-size">
+        Talle:
+        
+          <span *ngIf="!swatchSize; else spanInfo">
+             <b>No seleccionado</b>
+          </span>
+        
+
+        <ng-template #spanInfo>
+          <span>
+            <b>
+              {{ swatchSize.size_us }} US 
+            </b>
+              (equivale a
+              {{ swatchSize.size_arg }} Arg)
+          </span>
+        </ng-template>
+      </span>
+    </span>
+
+    <span 
+      class="selected-item-stock"
+      *ngIf="swatchSize"
+      >
+      <span 
+          *ngIf="swatchSize.stock > 0 else stockOut"
+          [ngClass]=" swatchSize.stock > 0 ? 'stock-product-exist' : 'stock-product-out' "
+        >
+          Disponible
+      </span>
+
+      <ng-template #stockOut>
+        <span 
+          [ngClass]=" swatchSize.stock > 0 ? 'stock-product-exist' : 'stock-product-out' "
+        >
+          Agotado
+        </span>
+      </ng-template>
+
+    </span>
+       
+  </p>
+</div>
+
+<hr style="margin: 20px 0;" />
+
+<div class="container-buttons">
+  <input type="number" name="productModelId" id="idProductModel" hidden value="" >
+
+<input type="button" value="elije un talle" [value]="swatchSize.stock === 0 ? 'out stock' : 'Agregar al carrito'" class="btn-add-cart"
+    [disabled]="swatchSize.stock === 0 ? true : false"
+  >
+
+  <a routerLink="/" class="btn-back-home">
+    Volver atras
+  </a>
+
+</div>

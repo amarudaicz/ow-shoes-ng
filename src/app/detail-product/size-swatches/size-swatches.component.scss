@@ -1,0 +1,11 @@
+@use '../color-swatches/color-swatches.component.scss';
+
+.swatch-out-stock{
+    background:url('https://drifters.com.ar/img/disabled.png') center center no-repeat; 
+    background-size: 100% 100%;
+    opacity: .5;
+    span{
+        color: rgb(137, 137, 137);
+
+    }
+}

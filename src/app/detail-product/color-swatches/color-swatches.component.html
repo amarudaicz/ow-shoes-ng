@@ -1,0 +1,33 @@
+<div class="btn-group" *ngIf="dataProduct">
+
+  <label
+    *ngFor="let swatch of dataProduct.colorSwatches"
+    class="product-swatch product-swatch-color"
+    for="colorSwatch{{ swatch.id }}"
+    [class.swatch-active] = "colorId === swatchColor.value"
+  >
+  
+    <input
+      required
+      class="input-color"
+      value="{{swatch.id}}"
+      name="color_id"
+      id="colorSwatch{{ swatch.id }}"
+      autocomplete="off"
+      type="radio"
+      #swatchColor
+      (click)="sendColorSwatch(swatch)"
+      [ngStyle]="{display:'none'}"
+
+      />
+      
+      <span class="color-swatch-arg swatch-info">
+      {{ swatch.color_arg }}
+    
+      <span class="color-swatch-us us-value" [class.active-span] = "colorId === swatchColor.value">
+        {{ swatch.color_us }}
+      </span>
+    </span>
+ 
+  </label>
+</div>

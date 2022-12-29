@@ -1,0 +1,55 @@
+@use '../../../assets/sass/mixins.scss' as m;
+@use '../../../assets/sass/variables.scss' as v;
+
+.banner{  
+    width: 95%;
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+} 
+
+
+.banner__principal{
+    margin: 0 auto 40px;
+    background-image: url('https://i.postimg.cc/RFYVLWjx/portada-mobile.png');
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    row-gap: 20px;
+    height: 60vh;
+
+    h1{
+        font-size: 2em;
+        color: white;
+        padding-left: 30px;
+        text-shadow: 5px 5px 5px #b7b0ae;
+    }
+
+    input{
+        font-size: 1em;
+        padding: 10px 30px;
+        margin: 20px 20px;
+        border: none;
+        background-color: v.$rosa-botones;
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+
+        @include m.tablet{
+            margin: 30px auto;   
+        }
+    }
+
+    @include m.tablet{
+        margin: 0 auto 60px auto  ;
+        height: 85vh;
+        background-size: cover;
+        background-image: url('https://i.postimg.cc/k5Fbsvc3/banner-home.webp');
+        h1{
+            font-size: 4em;
+        }
+
+    }
+     
+}

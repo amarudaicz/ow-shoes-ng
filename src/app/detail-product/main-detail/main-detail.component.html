@@ -1,0 +1,51 @@
+<div class="content">
+  <hr class="separator-top" />
+
+  <div class="breadscrums">
+    <p>home <span>/</span> product</p>
+  </div>
+
+  <section class="container-product container">
+    <div class="container-data">
+      <div class="container-images">
+        <app-images-product [dataProduct]="dataProduct"></app-images-product>
+      </div>
+
+      <div class="container-info">
+        
+        <div class="container-title-product">
+          <span class="subtitle-product">{{ dataProduct.subtitle }} </span>
+          <h1 class="title-product">{{ dataProduct.title }}</h1>
+          <span class="price-product">{{ dataProduct.price | currency }}</span>
+        </div>
+
+        <hr class="separator-title-swatches" />
+
+        <form action="">
+          <div class="swatches-color-product container-swatches">
+            <p>Elije el color:</p>
+            <app-color-swatches
+              (colorIdEmiter)="reciveSwatch($event)"
+              [dataProduct]="dataProduct"
+            ></app-color-swatches>
+          </div>
+
+          <div class="swatches-size-product container-swatches">
+            <p>Elije el talle:</p>
+            <app-size-swatches
+              [idProduct]="idProduct"
+              [swatchColor]="swatchColor"
+              (swatchSizeEmitter)="reciveSwatch($event)"
+            ></app-size-swatches>
+          </div>
+
+          <app-selected-product
+            [swatchSize]="swatchSize"
+            [swatchColor]="swatchColor"
+          ></app-selected-product>
+        </form>
+
+      </div>
+    </div>
+  </section>
+</div>

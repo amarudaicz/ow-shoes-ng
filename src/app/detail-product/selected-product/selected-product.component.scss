@@ -1,0 +1,55 @@
+@use '../../../assets/sass/mixins.scss' as m;
+@use '../../../assets/sass/variables.scss' as v;
+
+.product-selected{
+    font-size: 14px;
+    text-align: center;
+
+}
+.selected-size{
+    margin: 0 20px;
+
+}
+.stock-product-out{
+    color:red;
+}
+
+.stock-product-exist{
+    color: green;
+}
+
+
+.container-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 10px;
+  
+  
+}
+
+.btn-add-cart{
+    width: 70%;
+    padding: 10px 0;
+    border-color: #100e0c;
+    background: #1E1B17;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover{
+      background: #100e0c;
+    }
+}
+
+.btn-back-home{
+    color:#333;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 10px;
+    background: rgba(121, 121, 121, 0.37);
+    border-radius: 15px;
+
+}

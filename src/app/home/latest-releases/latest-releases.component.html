@@ -1,0 +1,35 @@
+
+
+
+<!-- GRID TIENDA -->
+<div class="tienda">
+  <h3 class="ult-lanzamientos">Ultimos lanzamientos</h3>
+
+  <section class="grid__tienda">
+    <div class="grid__tienda--producto" *ngFor="let p of lastestProducts">
+
+      <!-- <img src={{ p.image }}/> -->
+
+      <div class="info-product">
+        <a class="link-product" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}" href="" >
+          <pre class="subtitle-product">{{ p.subtitle }}</pre>
+
+          <span class="title-product">{{ p.title }}</span>
+        </a>
+
+        <span class="price-product">{{ p.price | currency }} </span>
+        <span class="cuota-product">3 cuotas de $11.999 sin interés</span>
+      </div>
+
+      <div class="block__inputs--tienda">
+        <!-- <i class="fa-solid fa-cart-shopping"></i>
+
+        <a href="https://ow-shoes.vercel.app/products/get-product?id=${p.id}">
+          <input type="button" value="Comprar" />
+        </a> -->
+      </div>
+      
+    </div>
+  </section>
+</div>
+

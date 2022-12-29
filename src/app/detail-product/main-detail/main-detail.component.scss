@@ -1,0 +1,133 @@
+@use '../../../assets/sass/mixins.scss' as m;
+@use '../../../assets/sass/variables.scss' as v;
+
+.content{
+
+}
+
+.separator-top{
+    width: 60px;
+    height: 4px;
+    margin: 10px auto;
+    background: #000;
+    border: none;
+    border-radius: 5px;
+
+
+}
+ 
+
+.breadscrums{
+
+}
+
+.container-product{
+    padding: 0 10px;
+    margin-top: 20px;
+
+    @include m.tablet{
+
+    }
+}
+
+.container-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include m.tablet{
+        flex-direction:row
+    }
+
+}
+
+.container-info{
+    @include m.tablet{
+        width: 40%;
+
+    }
+
+}
+
+.container-title-product{
+
+}
+
+.title-product{
+    font-size: 50px;
+    font-family: "acumin-pro-condensed", "acumin-pro-condensed", "Oswald", Helvetica, Arial, sans-serif;
+    margin: 5px 0 10px 0;
+}
+
+.subtitle-product{
+
+}
+
+.price-product{
+
+}
+
+.separator-title-swatches{
+    margin: 20px 0;
+    
+}
+
+.container-swatches{
+    p{
+        font-size: 14px;
+    }
+}
+
+.container-images{
+    margin: 0 0 20px 0;
+    @include m.tablet{
+        width: 50%;
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 768px){
+    .container {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 1170px;
+    }
+
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}

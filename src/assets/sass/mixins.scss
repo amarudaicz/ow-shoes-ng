@@ -1,0 +1,50 @@
+
+@mixin resetear-lista{
+    margin: 0;
+    padding:0;
+    list-style: none;
+}
+
+
+@mixin telefono {
+    @media (min-width: 480px) {
+        @content;
+    }
+}
+
+
+@mixin tablet {
+    @media (min-width: 992px) {
+        @content;
+    } 
+}
+
+
+@mixin portatil {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+
+@mixin button($background){
+    font-size: 1rem;
+    color: white;
+    background: $background;
+    width: max-content;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+}
+
+@mixin buttons($property, $ltr-value, $rtl-value) {
+    margin: $ltr-value;
+  
+}
+
+
+@mixin dark() {
+    body.dark_mode & {
+        @content;
+    } 
+}

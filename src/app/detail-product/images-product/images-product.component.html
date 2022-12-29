@@ -1,0 +1,16 @@
+<div class="container-images-comp">
+  <div class="container-image-full">
+    <img class="image-product-full" [src]="imageUrl" />
+  </div>
+
+  <ul class="contanier-images-list">
+    <li
+      *ngFor="let image of testImages"
+      class="image-preview"
+      (click)="setImage(image)"
+      [class.image-preview-active] = "image === imageUrl"
+    >
+      <img class="image-mini" src="{{ image }}" width="70px" alt="" />
+    </li>
+  </ul>
+</div>

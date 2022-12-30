@@ -4,8 +4,8 @@
     *ngFor="let swatch of dataProduct.colorSwatches"
     class="product-swatch product-swatch-color"
     for="colorSwatch{{ swatch.id }}"
-    [class.swatch-active] = "colorId === swatchColor.value"
-  >
+    [class.swatch-active] = "colorId === swatchColors.value"
+  > 
   
     <input
       required
@@ -14,8 +14,8 @@
       name="color_id"
       id="colorSwatch{{ swatch.id }}"
       autocomplete="off"
-      type="radio"
-      #swatchColor
+      type="radio" 
+      #swatchColors
       (click)="sendColorSwatch(swatch)"
       [ngStyle]="{display:'none'}"
 
@@ -24,7 +24,7 @@
       <span class="color-swatch-arg swatch-info">
       {{ swatch.color_arg }}
     
-      <span class="color-swatch-us us-value" [class.active-span] = "colorId === swatchColor.value">
+      <span class="color-swatch-us us-value" [class.active-span] = "colorId === swatchColors.value">
         {{ swatch.color_us }}
       </span>
     </span>

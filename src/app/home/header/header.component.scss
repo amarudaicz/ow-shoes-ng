@@ -47,10 +47,9 @@ header {
 }
 
 .icon_cart {
-  font-size: 1.1rem;
-  color: v.$rosa-botones;
   margin: 0 15px 0 0;
  cursor: pointer;
+
   @include m.dark{
     color: #00758D;
     

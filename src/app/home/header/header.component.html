@@ -93,9 +93,13 @@
     
         <p class="username">Amaru Daicz</p>
 
-        <i class="fa-solid fa-cart-shopping icon_cart" id="btnCart" (click)="showCart()"></i>
-
+        <mat-icon [matBadge]="totalItemsCart" matBadgeColor="accent" matBadgeSize="small" (click)="showCart()" color="primary"  class="icon_cart"  matBadgePosition="after">shopping_cart</mat-icon>
+ 
         <i class="fa-solid fa-right-from-bracket icon_log-out"></i>
+
+          
+          
+
           
       </div>
   

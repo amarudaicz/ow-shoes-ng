@@ -8,7 +8,8 @@
             <div class="info_item">
                 <h3 class="title_item">{{p.title}}</h3>
                 <p class="subtitle_item">{{p.subtitle}}</p>
-                <p class="size_item">Talle: {{p.size}}us</p>
+                <p class="size_item">Talle: {{p.size_us}}us</p>
+                <p class="color_item">color: {{p.color_arg}}</p>
                 <p class="quantity_item">Cantidad: {{p.quantity}}</p>
                 <span class="price_item">Precio: {{ p.price | currency : '$'}} </span>
                 <input type="button" class="delete_item" id="id" value="Eliminar" />

@@ -21,11 +21,12 @@ export class MainDetailComponent implements OnInit {
   swatchColor?:object;
   swatchSize?:object|any;
   dataProduct?:ProductData|any; 
-  
+  swatchSizeArray:any;
   
   ngOnInit() {
     this.idProduct = this.route.snapshot.queryParams['id'];
     this.getDataProduct()
+    
   }
   
   getDataProduct(){
@@ -33,7 +34,8 @@ export class MainDetailComponent implements OnInit {
     .subscribe((res:any) => {
       this.dataProduct = res
       this.swatchColor = res.colorSwatches[0]
-      console.log(res);
+      console.log(res.colorSwatches);
+      console.log(this.swatchColor);
       
     }) 
   }  
@@ -41,9 +43,26 @@ export class MainDetailComponent implements OnInit {
   reciveSwatch(swatch: object | any){
     if (swatch.color_arg) {
       this.swatchColor = swatch
+      console.log('COLORR');
     }else{
       this.swatchSize = swatch
     }      
     console.log(swatch);
+  }
+
+  reciveVariants(variants:any){
+    this.swatchSizeArray = variants
+    console.log(this.swatchSizeArray);
+
+    if(this.swatchSize){
+      console.log(this.swatchSizeArray.some((e:any) => e.id === this.swatchSize.size_id));
+      const findSelectedSize = this.swatchSizeArray.filter((e:any) => e.size_id === this.swatchSize.size_id)
+      console.log(findSelectedSize, this.swatchSizeArray);
+      
+      this.swatchSize=findSelectedSize[0] 
+      
+    }
+    
+
   }
 }

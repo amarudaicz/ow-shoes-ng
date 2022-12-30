@@ -1,6 +1,7 @@
 import { Component, Input, OnInit , Output ,EventEmitter} from '@angular/core';
 import {trigger,state,style,animate,transition} from '@angular/animations';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 
 
 @Component({
@@ -35,7 +36,7 @@ import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 
 export class CartSlideComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute){ } 
+  constructor(private storage:LocalStorageService){ } 
   
   @Input() cartVisible?:boolean;
   @Output() cartState = new EventEmitter<boolean>();
@@ -48,33 +49,10 @@ export class CartSlideComponent implements OnInit {
     this.getCart()
   }
 
-  private getUser(){
- 
-  }
 
   private getCart(){
-    
-    const cart = [
-      {
-        id:1,
-        title:'NIKE AIR MAX',
-        subtitle:'high',
-        size: 10,
-        quantity:1,
-        price:10000
-      },
-      {
-        id:2,
-        title:'NEW BALANCE 371',
-        subtitle:'running',
-        size: 10,
-        quantity:1,
-        price:15000
-      }
-    ]
-    
-    this.totalCart = cart.map(e => e.price).reduce((prev, curr)=> prev + curr)
-    this.cartUser = cart
+    this.cartUser = this.storage.getItem('cart_user')
+    this.totalCart = this.cartUser.map(e => e.price).reduce((prev, curr)=> prev + curr)
   }
 
 

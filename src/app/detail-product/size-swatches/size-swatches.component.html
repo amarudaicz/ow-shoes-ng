@@ -3,25 +3,23 @@
     *ngFor="let swatch of sizeSwatches"
     class="product-swatch product-swatch-color"
     for="sizeSwatches{{ swatch.id }}"
-    [class.swatch-active] = "sizeId === swatchSize.value"
+    [class.swatch-active] = "sizeId === swatch.size_id"
     [ngClass]="swatch.stock === 0 ? 'swatch-out-stock' : '' "
   >
-    <input
+    <input 
       required
       class="input-size"
       value="{{ swatch.id }}"
-      name="size_id"
       id="sizeSwatches{{ swatch.id }}"
       autocomplete="off"
       type="radio"
-      #swatchSize
       (click)="sendSizeSwatch(swatch)"
-      [ngStyle]="{ display: 'none' }"
+      [ngStyle]="{ display: 'none' }" 
     />
 
     <span class="size-swatch-arg swatch-info">
       {{ swatch.size_arg }}
-
+ 
       <span class="size-swatch-us us-value"> {{ swatch.size_us }} US </span>
 
     </span>

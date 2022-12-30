@@ -8,7 +8,9 @@
   <section class="container-product container">
     <div class="container-data">
       <div class="container-images">
+
         <app-images-product [dataProduct]="dataProduct"></app-images-product>
+
       </div>
 
       <div class="container-info">
@@ -25,7 +27,8 @@
           <div class="swatches-color-product container-swatches">
             <p>Elije el color:</p>
             <app-color-swatches
-              (colorIdEmiter)="reciveSwatch($event)"
+              (colorIdEmitter)="reciveSwatch($event)"
+              (swatchSizeEmitter)="reciveVariants($event)"
               [dataProduct]="dataProduct"
             ></app-color-swatches>
           </div>
@@ -35,6 +38,7 @@
             <app-size-swatches
               [idProduct]="idProduct"
               [swatchColor]="swatchColor"
+              [sizeSwatches]="swatchSizeArray"
               (swatchSizeEmitter)="reciveSwatch($event)"
             ></app-size-swatches>
           </div>
@@ -42,9 +46,13 @@
           <app-selected-product
             [swatchSize]="swatchSize"
             [swatchColor]="swatchColor"
+            [dataProduct]="dataProduct"
           ></app-selected-product>
-        </form>
 
+        </form>
+ 
+        <app-description-product [dataProduct]="dataProduct"> </app-description-product>
+         
       </div>
     </div>
   </section>

@@ -8,7 +8,8 @@ import { LatestReleasesComponent } from './latest-releases/latest-releases.compo
 import { MainHomeComponent } from './main-home/main-home.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
-
+import {MatBadgeModule } from '@angular/material/badge'
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -23,8 +24,11 @@ import { AppRoutingModule } from '../app-routing.module';
   imports: [
     CommonModule,
     RouterModule,
-    AppRoutingModule 
+    AppRoutingModule,
+    MatBadgeModule,
+    MatIconModule
   ],
+
   exports:[
     HeaderComponent,
     BannerPegasusComponent,

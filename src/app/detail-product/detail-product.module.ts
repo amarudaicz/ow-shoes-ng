@@ -7,21 +7,25 @@ import { ColorSwatchesComponent } from './color-swatches/color-swatches.componen
 import { SizeSwatchesComponent } from './size-swatches/size-swatches.component';
 import { ImagesProductComponent } from './images-product/images-product.component';
 import { SelectedProductComponent } from './selected-product/selected-product.component'
+import {MatIconModule} from '@angular/material/icon';
+import { DescriptionProductComponent } from './description-product/description-product.component';
 
 
-
+  
 @NgModule({
   declarations: [
     MainDetailComponent,
     ColorSwatchesComponent,
     SizeSwatchesComponent,
     ImagesProductComponent,
-    SelectedProductComponent
+    SelectedProductComponent,
+    DescriptionProductComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ],
   exports:[
     

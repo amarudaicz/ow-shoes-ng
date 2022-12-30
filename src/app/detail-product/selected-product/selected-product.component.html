@@ -33,21 +33,25 @@
       class="selected-item-stock"
       *ngIf="swatchSize"
       >
+      
       <span 
           *ngIf="swatchSize.stock > 0 else stockOut"
-          [ngClass]=" swatchSize.stock > 0 ? 'stock-product-exist' : 'stock-product-out' "
+          [ngStyle]=" {color: swatchSize.stock > 0 ? 'green' : 'red'} "
         >
           Disponible
-      </span>
+
+        </span>
 
       <ng-template #stockOut>
         <span 
-          [ngClass]=" swatchSize.stock > 0 ? 'stock-product-exist' : 'stock-product-out' "
-        >
+        [ngStyle]=" {color: swatchSize.stock > 0 ? 'green' : 'red'} "
+        > 
           Agotado
         </span>
       </ng-template>
-
+      
+      <mat-icon class="circle-stock" [ngStyle]=" {color: swatchSize.stock > 0 ? 'green' : 'red'} ">fiber_manual_record</mat-icon>
+    
     </span>
        
   </p>
@@ -55,11 +59,13 @@
 
 <hr style="margin: 20px 0;" />
 
-<div class="container-buttons">
+<div class="container-buttons" *ngIf="swatchSize">
   <input type="number" name="productModelId" id="idProductModel" hidden value="" >
 
 <input type="button" value="elije un talle" [value]="swatchSize.stock === 0 ? 'out stock' : 'Agregar al carrito'" class="btn-add-cart"
     [disabled]="swatchSize.stock === 0 ? true : false"
+    [ngClass]="swatchSize.stock === 0 ? 'btn-disabled' : ''"
+    (click)="addProductCart()"
   >
 
   <a routerLink="/" class="btn-back-home">

@@ -4,12 +4,18 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-  h1,h2,h4 {
+
+  @font-face {
+    font-family: "futura-condensed";
+    src: url('./assets/Nike-Font/Futura\ Condensed\ Extra\ Bold.otf');
+  }
+
+  h1,h2{
+    font-family: 'futura-condensed';
     
   }
   
-  h3{
+  h3,h4{
     margin: 10px 0;
     font-weight: 400;
     font-size: 2em;

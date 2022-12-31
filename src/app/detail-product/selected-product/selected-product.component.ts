@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgToastService } from 'ng-angular-popup';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 import { ItemCartStorage } from '../../interfaces/itemCartStorage.interface';
 
@@ -16,7 +15,7 @@ export class SelectedProductComponent implements OnInit {
   } 
 
 
-  constructor(private storage:LocalStorageService, private alert:NgToastService){
+  constructor(private storage:LocalStorageService){
 
 
   }
@@ -63,7 +62,6 @@ export class SelectedProductComponent implements OnInit {
     };
     this.productBuy = item
     this.processItemCart(item);
-    this.showSuccess(item)
 
     setTimeout(()=>{
       this.productBuy = undefined
@@ -101,12 +99,6 @@ export class SelectedProductComponent implements OnInit {
     
   }
  
-  showSuccess(item:ItemCartStorage){
-    this.alert.success({detail:"CORRECTO",summary:`Producto ${item.title} Talle:${item.size_arg} agregado al carrito con exito`, duration:3000});
-  }
-
-   
-
 
 } 
  

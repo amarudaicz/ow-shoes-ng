@@ -30,11 +30,22 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
 
   public showCart(){
     this.cartVisible = true
+    this.disableScroll()
   }
 
   public updateStateCart(state:boolean){
     this.cartVisible = state 
   }
 
+  disableScroll() {
+    let x = window.scrollX;
+    let y = window.scrollY;
+    window.onscroll = () => window.scrollTo(x, y);
+  }
+
+
+    
+  
+    
 
 }

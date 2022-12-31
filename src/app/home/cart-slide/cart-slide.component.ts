@@ -79,6 +79,11 @@ export class CartSlideComponent implements OnInit, OnChanges {
   public hideCart(){
     this.cartVisible = false
     this.cartState.emit(this.cartVisible)
+    this.enableScroll()
+  }
+  
+  enableScroll() {
+    window.onscroll = null;
   }
 }
  

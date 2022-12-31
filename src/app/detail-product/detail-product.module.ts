@@ -10,6 +10,7 @@ import { SelectedProductComponent } from './selected-product/selected-product.co
 import {MatIconModule} from '@angular/material/icon';
 import { DescriptionProductComponent } from './description-product/description-product.component';
 import { ModalBuyProductComponent } from './modal-buy-product/modal-buy-product.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 
   
@@ -31,6 +32,8 @@ import { ModalBuyProductComponent } from './modal-buy-product/modal-buy-product.
   ],
   exports:[
     
-  ]
+  ],
+  providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
+    
 })
 export class DetailProductModule { }

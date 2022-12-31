@@ -3,7 +3,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Firefox */
+    scrollbar-width: auto;
+    scrollbar-color: #7e7e7e #ffffff00;
   }
+
+  /* ===== Scrollbar CSS ===== */
+  /* Chrome, Edge, and Safari */
+
 
   @font-face {
     font-family: "futura-condensed";
@@ -26,6 +33,8 @@
     font-family: "Roboto", sans-serif;
     overflow-x: hidden;
     transition: all .5s;
+
+
   }
 
   .dark_mode{
@@ -60,6 +69,18 @@
    html {
       line-height: 1.15; /* 1 */
       -webkit-text-size-adjust: 100%; /* 2 */
+      
+      ::-webkit-scrollbar {
+        width: 16px;
+      }
+    
+      ::-webkit-scrollbar-track {
+        background: #d8d8d800;
+      }
+    
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(#747474,#3b3b3b);
+      }
     }
     
     /* Sections

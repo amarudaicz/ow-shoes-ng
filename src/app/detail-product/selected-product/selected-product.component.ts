@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 import { ItemCartStorage } from '../../interfaces/itemCartStorage.interface';
+import { ModalBuyProductComponent } from '../modal-buy-product/modal-buy-product.component';
 
 @Component({
   selector: 'app-selected-product',
@@ -60,15 +62,11 @@ export class SelectedProductComponent implements OnInit {
     };
 
     this.processItemCart(item);
-    
-  
+
   }
-
-
- 
-
-
+    
   processItemCart(item: ItemCartStorage) {
+
     const cartUser: ItemCartStorage[] = this.storage.getItem('cart_user');
 
     if (!cartUser) {
@@ -96,5 +94,12 @@ export class SelectedProductComponent implements OnInit {
     this.storage.cart = cartUser
     
   }
+ 
+  openDialog(): void {
+
+  
+  }
+
+
 
 }

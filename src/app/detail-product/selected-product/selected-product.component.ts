@@ -68,7 +68,7 @@ export class SelectedProductComponent implements OnInit {
     setTimeout(()=>{
       this.productBuy = undefined
     },2000) 
-    
+     
   }
     
   processItemCart(item: ItemCartStorage) {

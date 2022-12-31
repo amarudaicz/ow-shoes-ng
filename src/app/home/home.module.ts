@@ -16,9 +16,9 @@ import {MatIconModule} from '@angular/material/icon';
   declarations: [
     HeaderComponent,
     CartSlideComponent,
-    BannerPegasusComponent,
+    BannerPegasusComponent,    
     BannerRunningComponent,
-    LatestReleasesComponent,
+    LatestReleasesComponent, 
     MainHomeComponent,
   ],
   imports: [

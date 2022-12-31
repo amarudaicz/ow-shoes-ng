@@ -9,6 +9,7 @@ import { ImagesProductComponent } from './images-product/images-product.componen
 import { SelectedProductComponent } from './selected-product/selected-product.component'
 import {MatIconModule} from '@angular/material/icon';
 import { DescriptionProductComponent } from './description-product/description-product.component';
+import { ModalBuyProductComponent } from './modal-buy-product/modal-buy-product.component';
 
 
   
@@ -19,7 +20,8 @@ import { DescriptionProductComponent } from './description-product/description-p
     SizeSwatchesComponent,
     ImagesProductComponent,
     SelectedProductComponent,
-    DescriptionProductComponent
+    DescriptionProductComponent,
+    ModalBuyProductComponent
   ],
   imports: [
     CommonModule,

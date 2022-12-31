@@ -34,8 +34,6 @@ export class MainDetailComponent implements OnInit {
     .subscribe((res:any) => {
       this.dataProduct = res
       this.swatchColor = res.colorSwatches[0]
-      console.log(res.colorSwatches);
-      console.log(this.swatchColor);
       
     }) 
   }  
@@ -47,17 +45,13 @@ export class MainDetailComponent implements OnInit {
     }else{
       this.swatchSize = swatch
     }      
-    console.log(swatch);
   }
 
   reciveVariants(variants:any){
     this.swatchSizeArray = variants
-    console.log(this.swatchSizeArray);
 
     if(this.swatchSize){
-      console.log(this.swatchSizeArray.some((e:any) => e.id === this.swatchSize.size_id));
       const findSelectedSize = this.swatchSizeArray.filter((e:any) => e.size_id === this.swatchSize.size_id)
-      console.log(findSelectedSize, this.swatchSizeArray);
       
       this.swatchSize=findSelectedSize[0] 
       
@@ -65,4 +59,6 @@ export class MainDetailComponent implements OnInit {
     
 
   }
+
+
 }

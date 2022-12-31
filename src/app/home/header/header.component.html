@@ -93,7 +93,7 @@
     
         <p class="username">Amaru Daicz</p>
 
-        <mat-icon [matBadge]="totalItemsCart" matBadgeColor="accent" matBadgeSize="small" (click)="showCart()" color="primary"  class="icon_cart"  matBadgePosition="after">shopping_cart</mat-icon>
+        <mat-icon *ngIf="cartUser" [matBadge]="cartUser.length" matBadgeColor="accent" matBadgeSize="small" (click)="showCart()" color="primary"  class="icon_cart"  matBadgePosition="after">shopping_cart</mat-icon>
  
         <i class="fa-solid fa-right-from-bracket icon_log-out"></i>
 

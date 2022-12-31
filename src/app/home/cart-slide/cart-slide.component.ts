@@ -1,7 +1,8 @@
-import { Component, Input, OnInit , Output ,EventEmitter} from '@angular/core';
+import { Component, Input, OnInit , Output ,EventEmitter, ChangeDetectionStrategy, OnChanges, SimpleChanges} from '@angular/core';
 import {trigger,state,style,animate,transition} from '@angular/animations';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
+import { ItemCartStorage } from 'src/app/interfaces/itemCartStorage.interface';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { LocalStorageService } from 'src/app/services/localStorage/local-storage
       })),
 
       transition('open => closed', [
-        animate('3.3s')
+        animate('0.3s')
       ]),
 
       transition('closed => open', [
@@ -34,25 +35,44 @@ import { LocalStorageService } from 'src/app/services/localStorage/local-storage
 })
 
 
-export class CartSlideComponent implements OnInit {
+export class CartSlideComponent implements OnInit, OnChanges {
 
   constructor(private storage:LocalStorageService){ } 
   
+  ngOnInit(){
+
+    this.getCart()
+
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!changes['cartVisible'].firstChange){
+
+      this.getCart()
+
+    }
+    
+  }
+    
+
+
   @Input() cartVisible?:boolean;
   @Output() cartState = new EventEmitter<boolean>();
+  @Output() cartEmitter = new EventEmitter<ItemCartStorage[]>();
   
-  public user:any = []
-  public cartUser:any[] = []
+  public cartUser:ItemCartStorage[] = []
   public totalCart:number = 0
 
-  ngOnInit(){
-    this.getCart()
-  }
 
 
   private getCart(){
-    this.cartUser = this.storage.getItem('cart_user')
-    this.totalCart = this.cartUser.map(e => e.price).reduce((prev, curr)=> prev + curr)
+    const cart=this.storage.getItem('cart_user')
+    if (cart) {
+      this.cartUser = cart
+      this.cartEmitter.emit(this.cartUser)
+      this.totalCart = this.cartUser.map(e => e.price).reduce((prev, curr)=> prev + curr)
+      
+    }
   }
 
 
@@ -61,3 +81,4 @@ export class CartSlideComponent implements OnInit {
     this.cartState.emit(this.cartVisible)
   }
 }
+ 

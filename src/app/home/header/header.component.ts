@@ -1,32 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ItemCartStorage } from 'src/app/interfaces/itemCartStorage.interface';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  changeDetection:ChangeDetectionStrategy.Default
 })
 
-
-export class HeaderComponent implements OnInit {
+ 
+export class HeaderComponent implements OnInit, AfterContentChecked {
 
   constructor(private storage:LocalStorageService){}
 
   ngOnInit(): void {
-    this.totalItemsCart = this.storage.getItem('cart_user').length
+
+  }
+    
+  ngAfterContentChecked(): void {
+    const cart = this.storage.getItem('cart_user')
+    this.cartUser = cart
+    console.log(this.cartUser);
   }
 
+
+  public cartUser:any; 
   public cartVisible:boolean = false
-  public totalItemsCart?:number
 
   public showCart(){
     this.cartVisible = true
-    console.log('asddsa')
   }
 
   public updateStateCart(state:boolean){
-    this.cartVisible = state
-    console.log('1213');
-    
+    this.cartVisible = state 
   }
+
+
 }

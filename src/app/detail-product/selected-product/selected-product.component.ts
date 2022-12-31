@@ -9,8 +9,10 @@ import { ItemCartStorage } from '../../interfaces/itemCartStorage.interface';
 })
 export class SelectedProductComponent implements OnInit {
   ngOnInit(): void {
-    console.log(this.swatchSize);
-  }
+
+    this.storage.cart = this.storage.getItem('cart_user')
+
+  } 
 
 
   constructor(private storage:LocalStorageService){
@@ -23,8 +25,7 @@ export class SelectedProductComponent implements OnInit {
   @Input() swatchColor: object | any;
   @Input() swatchSize?: object | any;
 
-  addProductCart() {
-    console.log(this.dataProduct, this.swatchSize, this.swatchColor);
+  addProductCart() {    
     const {
       title,
       subtitle, 
@@ -60,12 +61,7 @@ export class SelectedProductComponent implements OnInit {
 
     this.processItemCart(item);
     
-    console.log(
-
-      this.storage.getItem('cart_user')
-      
-    );
-
+  
   }
 
 
@@ -73,7 +69,7 @@ export class SelectedProductComponent implements OnInit {
 
 
   processItemCart(item: ItemCartStorage) {
-    const cartUser: string | null = localStorage.getItem('cart_user');
+    const cartUser: ItemCartStorage[] = this.storage.getItem('cart_user');
 
     if (!cartUser) {
       const arrayCart: Array<ItemCartStorage> = Array(item);
@@ -81,24 +77,24 @@ export class SelectedProductComponent implements OnInit {
       return;
     }
 
-    const cartParsed: Array<ItemCartStorage> = JSON.parse(cartUser);
-
-    const verifyProductDuplicate: boolean = cartParsed.some(
+    const verifyProductDuplicate: boolean = cartUser.some(
       (e:ItemCartStorage) => e.idProductVariant === item.idProductVariant
     );
-    console.log(verifyProductDuplicate);
 
     if (verifyProductDuplicate) {
-      cartParsed.forEach((e:ItemCartStorage) => {
+      cartUser.forEach((e:ItemCartStorage) => {
         if (e.idProductVariant === item.idProductVariant) {
           e.quantity += 1;
-          localStorage.setItem('cart_user', JSON.stringify(cartParsed));
+          localStorage.setItem('cart_user', JSON.stringify(cartUser));
         }
       });
     } else {
-      cartParsed.push(item);
-      localStorage.setItem('cart_user', JSON.stringify(cartParsed));
+      cartUser.push(item);
+      localStorage.setItem('cart_user', JSON.stringify(cartUser));
     }
 
+    this.storage.cart = cartUser
+    
   }
+
 }

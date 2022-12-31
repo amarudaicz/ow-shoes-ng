@@ -25,7 +25,8 @@
   h3,h4{
     margin: 10px 0;
     font-weight: 400;
-    font-size: 2em;
+    font-size: 22px;
+    font-family: 'futura-condensed';
   }
   
   
@@ -38,7 +39,7 @@
   }
 
   .dark_mode{
-    background: #212121;
+    background: #212121; 
   }
 
   .ligth_mode{
@@ -69,7 +70,7 @@
    html {
       line-height: 1.15; /* 1 */
       -webkit-text-size-adjust: 100%; /* 2 */
-      
+
       ::-webkit-scrollbar {
         width: 16px;
       }

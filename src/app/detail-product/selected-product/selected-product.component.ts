@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { NgToastService } from 'ng-angular-popup';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 import { ItemCartStorage } from '../../interfaces/itemCartStorage.interface';
-import { ModalBuyProductComponent } from '../modal-buy-product/modal-buy-product.component';
 
 @Component({
   selector: 'app-selected-product',
@@ -17,7 +16,7 @@ export class SelectedProductComponent implements OnInit {
   } 
 
 
-  constructor(private storage:LocalStorageService){
+  constructor(private storage:LocalStorageService, private alert:NgToastService){
 
 
   }
@@ -26,6 +25,8 @@ export class SelectedProductComponent implements OnInit {
   @Input() dataProduct?: object | any;
   @Input() swatchColor: object | any;
   @Input() swatchSize?: object | any;
+  overlayBuyProduct:boolean = false
+  productBuy?:ItemCartStorage;
 
   addProductCart() {    
     const {
@@ -60,9 +61,14 @@ export class SelectedProductComponent implements OnInit {
       color_arg,
       quantity: 1,
     };
-
+    this.productBuy = item
     this.processItemCart(item);
+    this.showSuccess(item)
 
+    setTimeout(()=>{
+      this.productBuy = undefined
+    },2000) 
+    
   }
     
   processItemCart(item: ItemCartStorage) {
@@ -95,11 +101,12 @@ export class SelectedProductComponent implements OnInit {
     
   }
  
-  openDialog(): void {
-
-  
+  showSuccess(item:ItemCartStorage){
+    this.alert.success({detail:"CORRECTO",summary:`Producto ${item.title} Talle:${item.size_arg} agregado al carrito con exito`, duration:3000});
   }
 
+   
 
 
-}
+} 
+ 

@@ -1,6 +1,7 @@
-<div class="cart_sidebar" [@openCloseCart]="cartVisible ? 'open' : 'closed'">
+   
+  <div class="cart_sidebar" [@openCloseCart]="cartVisible ? 'open' : 'closed'" [ngStyle]="{'box-shadow': cartVisible? '#000 -2px 0px 20px 0px' : ''}">
 
-  <div class="items_cart">
+  <div class="items_cart"> 
         <h2 class="title_cart">Mi carrito</h2>
         <i id="btnCloseCart" class="fa-solid fa-xmark" (click)="hideCart()"></i>
 

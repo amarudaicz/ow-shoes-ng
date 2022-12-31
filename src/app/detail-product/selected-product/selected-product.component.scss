@@ -58,3 +58,42 @@
     background: rgb(99, 99, 99);
     border-color: #100e0c00 ;
 }
+
+.overlay-buy-product{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #00000046;
+    backdrop-filter:blur(5px);
+    
+    
+    .container-data{
+        width: 400px;
+        height: 250px;
+        background: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 15px;
+    }
+}
+
+.container-lef-rig{
+    display: flex;
+
+}
+
+.container-text{
+
+}
+
+.container-image{
+    padding:5px;
+
+    img{
+        width:100%;
+        
+    }
+}

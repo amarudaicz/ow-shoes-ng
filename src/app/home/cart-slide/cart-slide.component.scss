@@ -12,7 +12,6 @@
   transition: all ease 0.5s;
   scroll-behavior: smooth;
   overflow:hidden scroll;
-  
   &::-webkit-scrollbar{
     width: 8px ;
   }
@@ -105,3 +104,4 @@
   backdrop-filter: blur(2px);
   z-index: 1;
 }
+

@@ -1,11 +1,11 @@
 <!--HEADER-->
-<header id="header">
+<header id="header" *ngIf="routeActive !== 'Login - OW SHOES'"> 
     <div class="menu">
       <div class="header__logo">
         <a href="https://ow-shoes.vercel.app/home">
           <img src="https://i.postimg.cc/7YGJdkVN/LOGO-BLANCO.png" alt="" class="header__logo--img" />
         </a>
-      </div>
+      </div> 
       
       <nav class="header__nav">
         <ul class="container__menu">
@@ -77,13 +77,13 @@
           <input type="checkbox" checked="">
         </label>
 
-        <div class="btns-login" >
+        <div class="btns-login" > 
         
-          <a href="/login" class="iniciar">Iniciar session </a>
+          <a [routerLink]="['/login']" class="iniciar">Iniciar session </a>
 
           <a href="/login/register" class="registrarse">
             Registrarse
-          </a>
+          </a> 
         </div>
 
         <i class="open__menu fa-solid fa-bars" id="btn-menu-movile"></i>

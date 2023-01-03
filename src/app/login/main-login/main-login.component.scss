@@ -1,0 +1,21 @@
+.main_container{
+  background: url('https://online.naranjax.com/assets/images/prelogin/background.svg') center center no-repeat fixed;
+  background-size: cover;
+  height: 100vh;
+ }
+
+.shadow-background{
+    background: linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 0%,black 100%);
+    bottom: 0;
+    height: 50%;
+  
+  position: absolute;
+  width: 100%;
+}
+
+.home-btn{
+  font-size: 2rem;
+  position: absolute;
+  top:10px;
+  left:10px;
+}

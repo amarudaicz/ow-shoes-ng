@@ -75,20 +75,42 @@
 </div>
 
 
+
 <div class="overlay-buy-product" *ngIf="productBuy" >
   <div class="container-data">
     <h4>PRODUCTO AGREGADO CON EXITO</h4>
     <div class="container-lef-rig">
       <div class="container-text container-50">
+        <span class="subtitle-modal" >{{productBuy.subtitle}}</span>
         <span>{{productBuy.title}}</span> <br>
-        <span>Talle: <b>{{productBuy.size_us}}US</b> </span> <br>
-        <span>Color: <b>{{productBuy.color_arg}}</b> </span> <br>
+        <span>Talle: <b>{{productBuy.size_us}}US</b> </span> 
+        <span>Color: <b>{{productBuy.color_arg}}</b> </span> 
+        <span>Precio: <b>{{productBuy.price|currency}}</b> </span> 
+        
       </div>
+
       <div class="container-image container-50">
         <img src="https://drifters.com.ar/uploads/product_image/25754/650w_DriftersPDP_DC8903-301_Shot1.jpg" alt="">
   
       </div>
+      
+    </div>
+
+    <div class="container-buttons-modal">
+
+      <a linkRouter="/" class="button-pay-product">
+        <button>
+          Proceder con el pago
+        </button>
+      </a>
+
+      <a linkRouter="/" class="button-close-modal" (click)="closeModal()">
+        <button>
+          Seguir comprando
+        </button>
+      </a>
 
     </div>
+
   </div>
 </div>

@@ -33,7 +33,6 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
   exports:[
     
   ],
-  providers:[{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}]
     
 })
 export class DetailProductModule { }

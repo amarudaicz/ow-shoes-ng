@@ -8,6 +8,7 @@ import { ItemCartStorage } from '../../interfaces/itemCartStorage.interface';
   styleUrls: ['./selected-product.component.scss'],
 })
 export class SelectedProductComponent implements OnInit {
+  
   ngOnInit(): void {
 
     this.storage.cart = this.storage.getItem('cart_user')
@@ -60,12 +61,9 @@ export class SelectedProductComponent implements OnInit {
       color_arg,
       quantity: 1,
     };
+
     this.productBuy = item
     this.processItemCart(item);
-
-    setTimeout(()=>{
-      this.productBuy = undefined
-    },2000) 
      
   }
     
@@ -99,6 +97,11 @@ export class SelectedProductComponent implements OnInit {
     
   }
  
+
+
+  closeModal(){
+    this.productBuy = undefined
+  }
 
 } 
  

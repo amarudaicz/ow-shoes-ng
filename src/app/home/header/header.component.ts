@@ -1,4 +1,5 @@
 import { AfterContentChecked, ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ItemCartStorage } from 'src/app/interfaces/itemCartStorage.interface';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 
@@ -12,21 +13,23 @@ import { LocalStorageService } from 'src/app/services/localStorage/local-storage
  
 export class HeaderComponent implements OnInit, AfterContentChecked {
 
-  constructor(private storage:LocalStorageService){}
+  constructor(private storage:LocalStorageService, private route:ActivatedRoute){}
 
   ngOnInit(): void {
-
-  }
     
+    
+  }
+  
   ngAfterContentChecked(): void {
     const cart = this.storage.getItem('cart_user')
-    this.cartUser = cart
-    console.log(this.cartUser);
+    this.cartUser = this.storage.cart
+    this.routeActive = this.route.snapshot.children[0].title
   }
-
+  
 
   public cartUser:any; 
   public cartVisible:boolean = false
+  public routeActive?:string;
 
   public showCart(){
     this.cartVisible = true
@@ -42,10 +45,6 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     let y = window.scrollY;
     window.onscroll = () => window.scrollTo(x, y);
   }
-
-
-    
-  
     
 
 }

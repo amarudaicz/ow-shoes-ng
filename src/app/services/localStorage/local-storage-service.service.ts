@@ -8,15 +8,14 @@ export class LocalStorageService{
 
   constructor() { }
 
-  cart:ItemCartStorage[] = []
+  cart:ItemCartStorage[] = this.getItem('cart_user')
 
   getItem(item:string){
 
     const cart:any = localStorage.getItem(item)
     const cartParsed:any = JSON.parse(cart)
-
     return cartParsed
-
+    
   }
 
 

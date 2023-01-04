@@ -1,5 +1,5 @@
-<div class="container" *ngIf="show" [@loginBoxSlide] >
-  
+<div class="container" *ngIf="states.stateBoxLogin" [@loginBoxAnimation] >
+
   <section class="left_inputs login">
     <div class="logo_login">
       <img src="https://i.postimg.cc/7YGJdkVN/LOGO-BLANCO.png" alt="" />
@@ -21,7 +21,7 @@
           />
     
           <span class="highlight"></span>
-          <span class="bar"></span>
+          <span class="bar"></span> 
           <label>Email</label>
         </div>
     
@@ -57,7 +57,7 @@
       
       <div class="registrate">
         <span
-          >No tienes cuenta? <a id="btnRegistrarse"  >Registrate</a></span
+          >No tienes cuenta? <a id="btnRegistrarse" (click)="leaveBoxLogin()"> Registrate </a></span
         >
       </div>
     </div>

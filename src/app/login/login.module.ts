@@ -17,7 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     RouterModule,
     MatIconModule
-     
+  
   ]
 })
 export class LoginModule { }

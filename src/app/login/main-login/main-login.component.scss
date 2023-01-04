@@ -2,6 +2,9 @@
   background: url('https://online.naranjax.com/assets/images/prelogin/background.svg') center center no-repeat fixed;
   background-size: cover;
   height: 100vh;
+  overflow: hidden;
+  min-height: 100vh;
+  position: relative;
  }
 
 .shadow-background{
@@ -9,13 +12,15 @@
     bottom: 0;
     height: 50%;
   
-  position: absolute;
+  position: fixed;
   width: 100%;
 }
 
 .home-btn{
-  font-size: 2rem;
+  width: auto; height: auto;
+  font-size: 3.4rem;
   position: absolute;
+  color: wheat;
   top:10px;
   left:10px;
 }

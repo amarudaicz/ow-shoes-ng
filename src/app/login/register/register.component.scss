@@ -1,1 +1,5 @@
-@use '../main-login/main-login.component.scss'
+@use '../login/login.component.scss';
+
+#btnIniciarSession{
+    cursor:pointer;
+}

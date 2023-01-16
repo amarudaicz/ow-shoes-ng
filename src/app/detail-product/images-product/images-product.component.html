@@ -1,6 +1,14 @@
 <div class="container-images-comp">
   <div class="container-image-full">
-    <img class="image-product-full" [src]="imageUrl" />
+    <!-- <img class="image-product-full"  [src]="imageUrl" /> -->
+
+    <lib-ngx-image-zoom 
+      class="image-product-full"
+      [thumbImage]=imageUrl
+      [fullImage]=imageUrl
+    >
+    </lib-ngx-image-zoom>
+
   </div>
 
   <ul class="contanier-images-list">
@@ -8,9 +16,10 @@
       *ngFor="let image of testImages"
       class="image-preview"
       (click)="setImage(image)"
-      [class.image-preview-active] = "image === imageUrl"
-    >
+      [class.image-preview-active] = "image === imageUrl">
+
       <img class="image-mini" src="{{ image }}" width="70px" alt="" />
+    
     </li>
   </ul>
 </div>

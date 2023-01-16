@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { MainLoginComponent } from './main-login/main-login.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,10 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
+    
+    
   
   ]
 })

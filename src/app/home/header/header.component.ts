@@ -24,6 +24,8 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     const cart = this.storage.getItem('cart_user')
     this.cartUser = this.storage.cart
     this.routeActive = this.route.snapshot.children[0].title
+    console.log(this.routeActive);
+    
   }
   
 

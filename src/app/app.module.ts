@@ -9,7 +9,8 @@ import { HomeModule } from "./home/home.module";
 import { DetailProductModule } from './detail-product/detail-product.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {LoginModule} from './login/login.module';
- 
+import { AdminModule } from './admin/admin.module';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,6 +26,7 @@ import {LoginModule} from './login/login.module';
         HomeModule,
         DetailProductModule,
         LoginModule,
+        AdminModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
           enabled: !isDevMode(),
           // Register the ServiceWorker as soon as the application is stable

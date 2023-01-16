@@ -1,6 +1,10 @@
 import {trigger,state, style, animate,transition, keyframes} from '@angular/animations';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLogin/handle-animation-login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { hostUrl } from 'src/app/app.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,6 +24,7 @@ import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLog
           style({transform: 'translateX(0px)'}), 
         ])),
       ]),
+
       transition(':leave', [       
         animate('1s ease-out', keyframes([ 
           style({transform: 'translateX(0px)', opacity:1}), 
@@ -36,15 +41,23 @@ import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLog
 })
 
 export class LoginComponent implements OnInit {
-  constructor(public states:HandleAnimationLoginService){
 
-  }
+  public dataForm:FormGroup;
+  public loader:boolean = false;
+  
+  constructor(public states:HandleAnimationLoginService, private formBuilder: FormBuilder, private http:HttpClient, private route:Router) {
+
+    this.dataForm = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
+    })
+
+  } 
 
   ngOnInit(): void {
+    
 
-    
-    
-  }
+  } 
 
 
   leaveBoxLogin(){
@@ -52,9 +65,37 @@ export class LoginComponent implements OnInit {
     this.states.stateBoxRegister = !this.states.stateBoxRegister
   }
 
-  
+  sendDataForm(){
+    console.log(this.dataForm);
+    const formState:boolean = this.dataForm.invalid
+
+    if (formState) this.dataForm.markAllAsTouched();
+    
+    if (!formState) {
+      this.loader = true
+      
+      this.http.post(hostUrl + 'login/go', this.dataForm.value).subscribe((res:any)=>{
+
+        //MANDAR EL USER POR EL BODY
+        //PETICION QUE BUSCA EL USER Y COMPARA CONTRASEÑAS
+        //DEVUELVE EL TOKEN JWT Y LO TENGO QUE GUARDAR En LOCALSTORAGE
+        console.log(res);
+
+      })
+
+      setTimeout(() => {
+        this.route.navigate(['/'])
+      }, 3000);
+
+    }
+      
+
+  }
 
 
+  processInput(input:string){
+    return this.dataForm.controls[input].errors && this.dataForm.controls[input].touched
+  }
 
 
 }

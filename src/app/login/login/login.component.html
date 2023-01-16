@@ -10,38 +10,52 @@
     <div class="container_form">
       <div id="container_errors-login"></div>
     
-      <form class="form_login" method="post" action="/login/go">
+      <form class="form_login" [formGroup]="dataForm" (submit)="sendDataForm()">
         <div class="form_group">
           <input
             required
             type="email"
-            name="email"
+            formControlName="email"
             id="email_login"
             class="form_control"  
+            [ngStyle]="{border:processInput('email') ? '1px solid red' : ''}"
           />
     
           <span class="highlight"></span>
           <span class="bar"></span> 
           <label>Email</label>
+
+          <p style="color:red;" *ngIf="processInput('email')">
+            Ingrese un email valido
+          </p>
         </div>
+
+
     
         <div class="form_group">
           <input
             required
             type="password"
-            name="password"
+            formControlName="password"
             class="form_control"
             id="password_login"
+            [ngStyle]="{border:processInput('password') ? '1px solid red' : ''}"
           />
     
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Contraseña</label>
+
+          <p style="color:red;" *ngIf="processInput('password')">
+            Ingrese una contraseña
+          </p>
+
         </div>
+        
     
         <div class="inputs_group">
           <input
-            type="button"
+            type="submit"
             value="Ingresar"
             id="btnSubmitGo"
             class="button_submmit"
@@ -53,7 +67,7 @@
             class="button_reset-pass"
           />
         </div>
-      </form>
+      </form> 
       
       <div class="registrate">
         <span
@@ -121,6 +135,23 @@
     
   </section>
 
- 
+  
+  
   
 </div>  
+
+<div class="overlay-loader" *ngIf="loader">
+  
+  <div class="banter-loader loader">
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+    <div class="banter-loader__box"></div>
+  </div>
+
+</div>

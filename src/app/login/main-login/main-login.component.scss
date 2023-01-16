@@ -20,7 +20,13 @@
   width: auto; height: auto;
   font-size: 3.4rem;
   position: absolute;
-  color: wheat;
+  color: rgb(255, 255, 255);
   top:10px;
   left:10px;
+  z-index: 3;
+  cursor: pointer;
+  
 }
+
+
+

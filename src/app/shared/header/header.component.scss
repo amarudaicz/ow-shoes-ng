@@ -47,12 +47,107 @@ header{
   height: 100%;
 }
 
-.icon_cart {
-  margin: 0 15px 0 0;
- cursor: pointer;
+.icon{
+  cursor: pointer;
+}
 
+.search-bar{
+
+ /* From uiverse.io by @satyamchaudharydev */
+/* this button is inspired by -- whatsapp input */
+/* == type to see fully interactive and click the close buttom to remove the text  == */
+  color: #000;
+  margin: 0 15px 0 0;
+
+  .inputGroup {
+    position: relative;
+
+  }
+  
+  .inputGroup input {
+    font-size: 100%;
+    padding: 0 30px 0 10px;
+    outline: none;
+    border: solid thin transparent;
+    background-color: #eceff1;
+    width: 100px;
+    line-height: 32px;
+    height: 32px;
+    transition: all ease .5s;
+
+    &::placeholder{
+      color: #000;
+    }
+
+    @include m.portatil{
+      width: 200px;
+    }
+
+
+
+  }
+  
+  .inputGroup label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+  }
+  
+  .inputGroup :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.9);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: #e8e8e8;
+  }
+  
+  .inputGroup :is(input:focus, input:valid) {
+    border-color: rgb(150, 150, 200);
+    &::placeholder{
+      opacity: 0;
+    }
+  }
+
+
+
+
+  /* style for both icons -- search,close */
+  .icon svg {
+    /* display: block; */
+    color: #111;
+    transition: 0.3s cubic-bezier(.4,0,.2,1);
+    height: 18px;
+  }
+
+  /* search icon */
+  .icon {
+    transition: 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+
+  }
+
+}
+
+.icon-user{
+  margin: 0 10px 0 0;
+}
+
+.icon-favorites{
+  margin: 0 10px 0 0;
+}
+
+.icon_cart {  
   @include m.dark{
-    color: #00758D;
     
   }
 }
@@ -68,12 +163,71 @@ header{
   }
 }
 
+  .container-display-user{
+    display: grid;
+    place-items: center;
+
+  }
+
+.container-admin{
+  width: max-content;
+
+  button {
+    appearance: none;
+    background-color: #ff7373e0;
+    border:none;
+    border-radius: 6px;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+
+    &:hover{
+      background-color:#fc8484e0;
+      text-decoration: none;
+      transition-duration: 0.1s; 
+    }
+   }
+
+   button:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+   }
+   
+   button:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+   }
+   
+   button:focus {
+    outline: 1px transparent;
+   }
+   
+   button:before {
+    display: none;
+  }
+}
+
+
 .container_user {
   display: flex;
   align-items: center;
   padding: 5px 20px;
-  border: 1px solid #777777;
-  border-radius: 15px;
   font-size: 0.8rem;
   width: max-content;
 
@@ -90,6 +244,8 @@ header{
   }
 }
 
+
+
 .header__inputs {
   font-size: 12px;
   font-weight: 400;
@@ -99,6 +255,7 @@ header{
     display: flex;
     justify-content: flex-end;
     column-gap: 10px;
+    align-items:center;
   }
 }
 
@@ -109,20 +266,81 @@ header{
 }
 
 .iniciar {
-  padding: 5px;
-  border: none;
-  background: none;
-  color: v.$gris-textos;
-  width:max-content;
+  a{
+    
+  }
+  width: auto; height: auto;
+  transition: 0.2s background;
+  color: #242424;  
+  font-size: 30px;
+  overflow:visible;
+
+  &:hover {
+
+  }
+  
 }
 
 .registrarse {
-  padding: 5px 25px;
-  border: none;
-  background-color: #e14521;
-  border-radius: 5px;
-  color: white;
-  width:max-content;
+
+    --primary-color: #645bff;
+    --secondary-color: #fff;
+    --hover-color: #111;
+    --arrow-width: 10px;
+    --arrow-stroke: 2px;
+    box-sizing: border-box;
+    border: 0;
+    border-radius: 20px;
+    color: var(--secondary-color);
+    padding: 1em 1.8em;
+    background: var(--primary-color);
+    display: flex;
+    transition: 0.2s background;
+    align-items: center;
+    gap: 0.6em;
+    font-weight: bold;
+  
+  
+  .arrow-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .arrow {
+    margin-top: 1px;
+    width: var(--arrow-width);
+    background: var(--primary-color);
+    height: var(--arrow-stroke);
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  .arrow::before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    border: solid var(--secondary-color);
+    border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+    display: inline-block;
+    top: -3px;
+    right: 3px;
+    transition: 0.2s;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+  
+  &:hover {
+    background-color: var(--hover-color);
+  }
+  
+  &:hover .arrow {
+    background: var(--secondary-color);
+  }
+  
+  &:hover .arrow:before {
+    right: 0;
+  }
 
 }
 
@@ -248,7 +466,7 @@ header{
   text-transform: uppercase;
   font-size: 1.4em;
   font-weight: 400;
-  color: v.$gris-textos;
+  color: #000;
 
   @include m.tablet {
     font-size: 1em;
@@ -341,7 +559,9 @@ header{
 .switch {
   --false: #E14521;
   --true: #00758D;
- }
+  margin: 0 40px 0 0;
+
+}
  
  input[type=checkbox] {
   appearance: none;

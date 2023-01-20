@@ -1,6 +1,5 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +9,7 @@ import { DetailProductModule } from './detail-product/detail-product.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {LoginModule} from './login/login.module';
 import { AdminModule } from './admin/admin.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -19,9 +19,10 @@ import { AdminModule } from './admin/admin.module';
     bootstrap: [AppComponent],
       
     imports: [
+        FormsModule,
         BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
+        HttpClientModule, 
+        AppRoutingModule, 
         BrowserAnimationsModule,
         HomeModule,
         DetailProductModule,
@@ -32,8 +33,8 @@ import { AdminModule } from './admin/admin.module';
           // Register the ServiceWorker as soon as the application is stable
           // or after 30 seconds (whichever comes first).
           registrationStrategy: 'registerWhenStable:30000'
-        }),
-    ]
+        }),  
+    ] 
 })
  
 export class AppModule { } 

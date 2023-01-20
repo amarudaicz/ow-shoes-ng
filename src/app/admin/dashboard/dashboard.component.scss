@@ -1,0 +1,67 @@
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
+
+.container_dashboard {
+  width: 20%;
+  height: 100vh;
+  background: #353a55;
+  padding: 20px 10px;
+  position: absolute;
+  display: none;
+
+  @include m.tablet {
+    display: initial;
+    position: fixed;
+  }
+}
+
+main {
+  background: #ebeef4;
+  padding: 0 30px;
+  height: 100%;
+  right: 0px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+  @include m.tablet {
+    width: 80%;
+    position: absolute;
+  }
+}
+
+.menu_link-dash {
+  color: #f0f0f1;
+  font-weight: 300;
+}
+
+.container_menu-dash {
+}
+
+.menu_dash {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  gap: 15px 0;
+}
+
+.logo_dash {
+  width: auto;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  img {
+    width: 150px;
+    height: 50px;
+    object-fit: cover;
+  }
+}
+
+.menu_item-dash {
+}
+
+.submenu_dash {
+  visibility: collapse;
+  display: none;
+}

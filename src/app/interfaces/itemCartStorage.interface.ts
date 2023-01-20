@@ -9,7 +9,7 @@ export interface ItemCartStorage{
     size_us:number
     size_arg:number
     color_id:number
-    color_us:number
+    color_us:string
     color_arg:number
     quantity:number
 }

@@ -1,3 +1,6 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
 /*MI RESET*/
 * {
   margin: 0;
@@ -55,7 +58,7 @@ h4 {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   overflow-x: hidden;
   transition: all 0.5s;
 }
@@ -69,7 +72,7 @@ body {
 }
 
 p {
-  font-family: "Roboto", sans-serif;
+  
 }
 
 ul {
@@ -392,9 +395,25 @@ template {
 [hidden] {
   display: none;
 }
-html,
-body {
 
+.toast{
+  min-width: 432px;
+  
+  *{
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
+  }
+
+  margin: 18px 5px 0 0 !important;
+  
+  button{
+    color: #ff7474 !important;
+  }
 }
-body {
+
+.ng-tns-c115-5{
+  border:0 !important;
+}
+
+.mat-form-field-appearance-fill{
+  width: 100%;
 }

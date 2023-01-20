@@ -1,12 +1,21 @@
 <div class="container-images-comp">
+
   <div class="container-image-full">
     <!-- <img class="image-product-full"  [src]="imageUrl" /> -->
 
+    <app-loader *ngIf="!stateImage"></app-loader>
+
     <lib-ngx-image-zoom 
-      class="image-product-full"
-      [thumbImage]=imageUrl
-      [fullImage]=imageUrl
-    >
+      [thumbImage]="imageUrl"
+      [fullImage]="imageUrl"
+      [magnification]="1"
+      [enableScrollZoom]="true"
+      [enableLens]="true"
+      [lensWidth]="280"
+      [lensHeight]="150"
+      (imagesLoaded)="imagesLoaded($event)"
+
+    > 
     </lib-ngx-image-zoom>
 
   </div>
@@ -22,4 +31,4 @@
     
     </li>
   </ul>
-</div>
+</div> 

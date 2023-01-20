@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { hostUrl } from 'src/app/app.component';
 import { Router } from '@angular/router';
-
+import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 
 @Component({
   selector: 'app-login',
@@ -42,27 +42,29 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  public dataForm:FormGroup;
-  public loader:boolean = false;
   
-  constructor(public states:HandleAnimationLoginService, private formBuilder: FormBuilder, private http:HttpClient, private route:Router) {
+  constructor(public statesBox:HandleAnimationLoginService, private formBuilder: FormBuilder, private http:HttpClient, private storage:LocalStorageService, private route:Router) {
 
     this.dataForm = this.formBuilder.group({
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]]
     })
-
+    
   } 
-
+  
   ngOnInit(): void {
     
-
+    
   } 
-
+  
+  public dataForm:FormGroup;
+  public loader:boolean = false;
+  public loginState?:string;
+  public hidePassword:boolean = true  
 
   leaveBoxLogin(){
-    this.states.stateBoxLogin = !this.states.stateBoxLogin
-    this.states.stateBoxRegister = !this.states.stateBoxRegister
+    this.statesBox.stateBoxLogin = !this.statesBox.stateBoxLogin
+    this.statesBox.stateBoxRegister = !this.statesBox.stateBoxRegister
   }
 
   sendDataForm(){
@@ -74,24 +76,39 @@ export class LoginComponent implements OnInit {
     if (!formState) {
       this.loader = true
       
-      this.http.post(hostUrl + 'login/go', this.dataForm.value).subscribe((res:any)=>{
-
+      this.http.post(hostUrl + '/login/go', this.dataForm.value).subscribe((res:any)=>{
         //MANDAR EL USER POR EL BODY
         //PETICION QUE BUSCA EL USER Y COMPARA CONTRASEÑAS
         //DEVUELVE EL TOKEN JWT Y LO TENGO QUE GUARDAR En LOCALSTORAGE
-        console.log(res);
+        if (res.errors){
+          this.loader = false
+          this.loginState = res.errors
+          console.log(this.loginState);
+          return
+        }
+        
+        const payload = {
+          name:res.name,
+          role:res.role
+        }
+        
+        this.storage.setMoreItems(
+          [{name:'tkow', value:res.token}, 
+          {name:'user', value:payload}]
+        )
+
+        this.route.navigate(['/'])
+        
 
       })
 
       setTimeout(() => {
-        this.route.navigate(['/'])
       }, 3000);
 
     }
       
 
   }
-
 
   processInput(input:string){
     return this.dataForm.controls[input].errors && this.dataForm.controls[input].touched

@@ -1,4 +1,4 @@
-<div class="container" *ngIf="states.stateBoxLogin" [@loginBoxAnimation] >
+<div class="container" *ngIf="statesBox.stateBoxLogin" [@loginBoxAnimation] >
 
   <section class="left_inputs login">
     <div class="logo_login">
@@ -8,50 +8,29 @@
     <h1 class="title_form">Iniciar Sesion</h1>
   
     <div class="container_form">
-      <div id="container_errors-login"></div>
+
+      <div *ngIf="loginState" id="container_errors-login">
+        <span>{{loginState}}</span> 
+      </div>
+
     
       <form class="form_login" [formGroup]="dataForm" (submit)="sendDataForm()">
-        <div class="form_group">
-          <input
-            required
-            type="email"
-            formControlName="email"
-            id="email_login"
-            class="form_control"  
-            [ngStyle]="{border:processInput('email') ? '1px solid red' : ''}"
-          />
-    
-          <span class="highlight"></span>
-          <span class="bar"></span> 
-          <label>Email</label>
-
-          <p style="color:red;" *ngIf="processInput('email')">
-            Ingrese un email valido
-          </p>
-        </div>
-
 
     
-        <div class="form_group">
-          <input
-            required
-            type="password"
-            formControlName="password"
-            class="form_control"
-            id="password_login"
-            [ngStyle]="{border:processInput('password') ? '1px solid red' : ''}"
-          />
-    
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Contraseña</label>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingresa tu Email</mat-label>
+          <input formControlName="email" matInput placeholder="Email"  required>
+          <mat-error *ngIf="processInput('email')">Ingresa un email</mat-error>
+        </mat-form-field>
 
-          <p style="color:red;" *ngIf="processInput('password')">
-            Ingrese una contraseña
-          </p>
-
-        </div>
-        
+        <mat-form-field appearance="fill">
+          <mat-label>Ingresa una Contraseña</mat-label>
+          <input formControlName="password" matInput required [type]="hidePassword ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="processInput('password')">Ingresa una contraseña</mat-error>
+        </mat-form-field> 
     
         <div class="inputs_group">
           <input
@@ -139,19 +118,4 @@
   
   
 </div>  
-
-<div class="overlay-loader" *ngIf="loader">
-  
-  <div class="banter-loader loader">
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-    <div class="banter-loader__box"></div>
-  </div>
-
-</div>
+<app-loader *ngIf="loader"></app-loader>

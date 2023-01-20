@@ -1,0 +1,56 @@
+   
+<div class="cart_sidebar" [@openCloseCart] *ngIf="cartService.cartState">
+    
+    <div class="cart-header">
+        <h2 class="title_cart">Carrito</h2>
+        <i id="btnCloseCart" class="fa-solid fa-xmark" (click)="hideCart()"></i>
+    </div>
+
+  <div class="items_cart"> 
+
+
+        <div class="item" *ngFor="let p of cartUser" #mainDiv  >
+
+            <div class="info_item" #infoItem>
+                <h3 class="title_item">{{p.title}}</h3>
+                <p class="subtitle_item">{{p.subtitle}}</p>
+                <p class="size_item">Talle: {{p.size_us}}us</p>
+                <p class="color_item">color: {{p.color_arg}}</p>
+                <p class="quantity_item">Cantidad: {{p.quantity}}</p>
+                <span class="price_item">Precio: {{ p.price | currency : '$'}} </span>
+                <input type="button" class="delete_item" value="Eliminar" (click)="deleteItemCart(p.idProductVariant, mainDiv, alertItem)" />
+            </div>
+
+            <div class="container_img-cart" #imageItem>
+                <img src="https://i.postimg.cc/RVyKZFF8/DETAIL-PRODUCT-AIR-TRAINER.webp" alt="" />
+            </div>
+
+           
+            <div class="alert-remove-item" id="itemCart{{p.idProductVariant}}" #alertItem style="transition:all .1s ease; transform:translateX(-200%)"  >
+                <h4>Quiere eliminar el producto</h4>
+                <span>{{p.title}}</span>
+                <button (click)="confirmDeleteItemCart()">SI</button>
+                <button (click)="declineDeleteItemCart()">NO</button>
+            </div>
+
+            
+        </div> 
+
+
+        <div >
+            <h2 *ngIf="totalCart !== 0 else cartEmpty" id="total_cart">Total: {{ totalCart | currency:'$' }} </h2>
+            <ng-template #cartEmpty> <p>Parece que no hay productos en tu carrito!</p></ng-template>
+        </div> 
+
+        <div> 
+            <a class="process-payment" *ngIf="totalCart !== 0" href="#">Ir a pagar</a>
+        </div>
+
+  </div>
+
+</div>
+
+<div class="overlay" (click)="hideCart()" *ngIf="cartService.cartState" [@overlayEnter]>
+
+
+</div>

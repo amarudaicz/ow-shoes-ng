@@ -1,4 +1,4 @@
-<div class="container" *ngIf="states.stateBoxRegister" [@registerBoxAnimation] style="padding:0;">
+<div class="container" *ngIf="statesBox.stateBoxRegister" [@registerBoxAnimation] style="padding:0;">
 
   <section class="left_inputs">
     <div class="logo_login">
@@ -7,75 +7,60 @@
     
     <h1 class="title_form">Registrarse</h1>
 
-    <div id="container_errors"></div>
+    <div id="container_errors" *ngIf="registerState" [ngClass]="registerState.state ? 'alert-succes' : 'alert-error' ">
+      <span>{{registerState.msg}}</span> 
+    </div>
     
     <div class="container_form">
-      <form
+ 
+        <form action="" 
         class="form_login"
-        id="formRegister"
-        method="post"
-        action="/login/register"
-      >
-        <div class="form_group">
-          <input
-            required
-            type="text"
-            name="name"
-            id="name_register"
-            class="form_control" 
-          />
-    
-          <span class="bar"></span>
-          <label>Nombre</label>
-        </div> 
-    
-        <div class="form_group">
-          <input
-            required
-            type="email"
-            name="email"
-            class="form_control"
-            id="email_register"
-          />
-    
-          <span class="bar"></span>
-          <label>Email</label>
-        </div>
-    
-        <div class="form_group">
-          <span>Fecha de nacimiento</span>
-          <input
-            required
-            type="date"
-            name="age"
-            class="form_control"
-            id="edad_register"
-          />
-          <span class="bar"></span>
-        </div>
-    
-        <div class="form_group">
-          <input
-            required
-            type="password"
-            name="password"
-            class="form_control"
-            id="password_register"
-          />
-    
-          <label>Contraseña</label>
-          <span class="bar"></span>
-        </div>
-    
-        <div class="inputs_group">
-          <input
-            type="button"
-            value="Registrarse"
-            id="btnSendForm"
-            class="button_submmit"
-          />
-        </div>
-      </form>
+        id="formRegister"   
+        [formGroup]="dataForm" 
+        (submit)="sendDataForm()">
+
+          <mat-form-field appearance="fill">
+            <mat-label>Ingresa tu Nombre</mat-label>
+            <input formControlName="name" matInput placeholder="Nombre"  required>
+            <mat-error *ngIf="processInput('name')">Completa tu nombre</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Ingresa tu Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email"  required>
+            <mat-error *ngIf="processInput('email')">Ingresa un email</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Ingresa tu fecha de nacimiento</mat-label>
+            <input formControlName="age" matInput [matDatepicker]="picker">
+            <mat-error *ngIf="processInput('age')">Completa tu edad</mat-error>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Ingresa una Contraseña</mat-label>
+            <input formControlName="password" matInput required [type]="hidePassword ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="processInput('password')">Ingresa una contraseña 8 caracteres minimo</mat-error>
+          </mat-form-field> 
+
+          
+          <div class="inputs_group">
+            <input
+              type="submit"
+              value="Registrarse"
+              id="btnSendForm"
+              class="button_submmit"
+            />
+          </div>
+
+        </form>
+
     
       <div class="iniciar_session">
         <span
@@ -83,6 +68,7 @@
           <a id="btnIniciarSession" (click)="leaveBoxRegister()" >Iniciar Session</a></span
         >
       </div>
+
     </div>
     
     <div class="separador">
@@ -125,3 +111,5 @@
   
   </section>
 </div>
+
+<app-loader *ngIf="loader"></app-loader>

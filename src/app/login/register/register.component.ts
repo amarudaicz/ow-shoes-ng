@@ -9,13 +9,17 @@ import {
 } from '@angular/animations';
 
 import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLogin/handle-animation-login.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MatDatepicker} from '@angular/material/datepicker';
+import { HttpClient } from '@angular/common/http';
+import { hostUrl } from 'src/app/app.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-
-  animations: [
+ 
+  animations: [ 
     trigger('registerBoxAnimation', [
       transition(':enter', [
         animate(
@@ -62,11 +66,73 @@ import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLog
   ],
 })
 export class RegisterComponent implements OnInit {
-  constructor(public states: HandleAnimationLoginService) {}
+  constructor(public statesBox: HandleAnimationLoginService, private formBuilder:FormBuilder, private http:HttpClient) {
+    
+    this.dataForm = this.formBuilder.group({
+      name:['', [Validators.required]],
+      email:['', [Validators.email, Validators.required]],
+      age:['',[Validators.required]],
+      password:['',[Validators.minLength(8), Validators.required]]
+    })
+  
+  }
+
+
   ngOnInit(): void {}
 
-  leaveBoxRegister() {
-    this.states.stateBoxRegister = !this.states.stateBoxRegister;
-    this.states.stateBoxLogin = !this.states.stateBoxLogin;
+
+  public dataForm:FormGroup;
+  public hidePassword:boolean = true
+  public registerState?:{state:boolean, msg:string};
+  public loader:boolean=false
+
+  public sendDataForm(): void{
+    const formState:boolean = this.dataForm.invalid
+    if (formState) return this.dataForm.markAllAsTouched();
+    this.loader = true
+    
+    this.http.post(hostUrl + '/login/register' , this.dataForm.value).subscribe((res:any) =>{
+
+      this.loader = false
+      if (res.errors){
+        this.registerState = {
+          state:false,
+          msg:res.errors  
+        }
+
+        console.log(this.registerState);
+        return
+      } 
+      
+      this.registerState = {
+        state:true,
+        msg:'Cuenta creada con exito'
+      }
+
+      // setTimeout(() => {
+      //   this.statesBox.stateBoxLogin=true
+      //   this.statesBox.stateBoxRegister=false
+      // }, 2500);
+
+
+
+
+
+
+    })
+
+
   }
+
+  processInput(input:string){
+    return this.dataForm.controls[input].errors && this.dataForm.controls[input].touched
+  }
+
+
+
+  leaveBoxRegister() {
+    this.statesBox.stateBoxRegister = !this.statesBox.stateBoxRegister;
+    this.statesBox.stateBoxLogin = !this.statesBox.stateBoxLogin;
+  }
+
 }

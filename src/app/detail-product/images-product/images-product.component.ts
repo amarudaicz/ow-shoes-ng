@@ -1,13 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-images-product',
   templateUrl: './images-product.component.html',
   styleUrls: ['./images-product.component.scss']
 })
-export class ImagesProductComponent {
+export class ImagesProductComponent implements OnInit {
+
+  ngOnInit(){
+    setTimeout(() => {
+      this.imageUrl = this.testImages[0]
+    }, 3000);
+  }
 
   @Input() dataProduct:any = {}
+
   testImages:string[]=[
     'https://drifters.com.ar/uploads/product_image/25754/650w_DriftersPDP_DC8903-301_Shot1.jpg',
     'https://drifters.com.ar/uploads/product_image/25755/650w_DriftersPDP_DC8903-301_Shot2.jpg',
@@ -19,11 +26,17 @@ export class ImagesProductComponent {
     'https://drifters.com.ar/uploads/product_image/25762/650w_DriftersPDP_DC8903-301_Shot9.jpg'
   ]
 
-  imageUrl:string = this.testImages[0]
+
+  imageUrl:string|any
+  stateImage:boolean = false
 
   setImage(image:string){
     console.log(image);
-    this.imageUrl = image
+    this.imageUrl = image 
+  }
+ 
+  imagesLoaded(state:boolean){
+    this.stateImage = state
   }
 
 }

@@ -3,7 +3,7 @@
 
 .cart_sidebar {
   height: 100%;
-  width: 400px;
+  width: 100%;
   position: fixed;
   z-index: 999;
   background: rgb(241, 241, 241);
@@ -12,6 +12,11 @@
   transition: all ease 0.5s;
   scroll-behavior: smooth;
   overflow:hidden scroll;
+
+  @include m.tablet{
+    width:400px;
+  }
+
   &::-webkit-scrollbar{
     width: 8px ;
   }
@@ -24,14 +29,36 @@
   }
 }
 
+.cart-header{
+  padding: 10px 10px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e4e4e4;
+  margin: 0 0 10px 0;
+
+  h2{
+    color:#2d2d31;
+    
+  }
+
+  .fa-xmark {
+    font-size: 2rem;
+    cursor: pointer;
+    color:#2d2d31;
+  }
+  
+}
+
 
 
 .items_cart {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px 0;
+  padding: 0 20px;
 }
+
 
 .item {
   display: flex;
@@ -41,10 +68,44 @@
   border: 1px solid gray;
   border-radius: 15px;
   padding: 15px;
+  transition: all .1s ease-out;
+}
+
+.alert-remove-item{
+  width: 100%;
+  
+  position: absolute;
+  padding: 15px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    span{
+
+      width: 150px;
+      display: inline-block;
+      margin: 0 15px 0 0;
+      @include m.tablet{
+        
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+
+    button{
+      padding: 4px 10px;
+      margin-right: 10px;
+    }
+
+    @include m.tablet{
+      max-width: 310px;
+    }
 }
 
 .info_item {
+  
   width: 150px;
+  transition:all .5s;
+
 }
 
 .title_item {
@@ -70,11 +131,14 @@
   background: black;
   color: white;
   padding: 5px 20px;
+  cursor: pointer;
+
 }
 
 .container_img-cart {
   width: 150px;
   height: 100px;
+  transition:all .5s;
 }
 
 .container_img-cart img {
@@ -84,24 +148,18 @@
   border-radius: 15px;
 }
 
-.fa-xmark {
-  font-size: 2rem;
-  position: absolute;
-  top: 18px;
-  right: 24px;
-  cursor: pointer;
-}
+
 
 
 .overlay{
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.425);
+  background: rgba(17,17,17);
+  opacity:.7;
   transition: all 1s;
-  backdrop-filter: blur(2px);
-  z-index: 1;
+  z-index: 10;
 }
 

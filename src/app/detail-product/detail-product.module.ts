@@ -11,8 +11,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { DescriptionProductComponent } from './description-product/description-product.component';
 import { ModalBuyProductComponent } from './modal-buy-product/modal-buy-product.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-
-
+import { SharedModule } from '../shared/shared.module';
   
 @NgModule({
   declarations: [
@@ -22,14 +21,17 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
     ImagesProductComponent,
     SelectedProductComponent,
     DescriptionProductComponent,
-    ModalBuyProductComponent
+    ModalBuyProductComponent,
   ],
+
   imports: [
     CommonModule,
     AppRoutingModule,
     RouterModule,
     MatIconModule,
-    NgxImageZoomModule
+    NgxImageZoomModule,
+    SharedModule
+    
   ],
 
   exports:[

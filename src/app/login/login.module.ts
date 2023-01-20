@@ -6,7 +6,12 @@ import { MainLoginComponent } from './main-login/main-login.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatTableModule} from '@angular/material/table';
+import {MatNativeDateModule} from '@angular/material/core';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     MatIconModule,
-    ReactiveFormsModule
-    
-    
-  
+    ReactiveFormsModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    MatDatepickerModule,
+    MatTableModule,
+    MatNativeDateModule,
+    SharedModule 
   ]
 })
-export class LoginModule { }
+export class LoginModule { } 

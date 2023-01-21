@@ -16,11 +16,15 @@ import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLog
  
 export class HeaderComponent implements OnInit, AfterContentChecked {
 
-  constructor(private route:Router, private storage:LocalStorageService, private cartService:CartUserService, private user:UserService, private toast:MatSnackBar, private statesBoxLogin:HandleAnimationLoginService){}
+  constructor(private route:Router, private storage:LocalStorageService, private cartService:CartUserService, private userService:UserService, private toast:MatSnackBar, private statesBoxLogin:HandleAnimationLoginService){}
 
   ngOnInit(): void {
+    this.userData = this.storage.getItem('user')
+    console.log(this.userData);
+    
     if (!this.userData) {
-      this.userData = {role:'user'}
+      this.storage.setItem('user', {role:'user'})
+      this.userData = this.storage.getItem('user')
     }
   }
   
@@ -29,7 +33,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
   }
 
   public cartUser:any; 
-  public userData:any = this.user.data
+  public userData?:any;
 
   public showCart(){
     this.cartService.cartState = true

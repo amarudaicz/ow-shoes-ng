@@ -1,0 +1,180 @@
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
+
+.container_saludo {
+  p {
+    margin-top: 10px;
+    color: #7c7e81;
+    font-size: 0.9rem;
+  }
+
+  padding: 0 20px;
+}
+
+.saludo_admin {
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: #232324;
+  margin: 0;
+}
+
+.container_cards {
+  display: flex;
+  padding: 20px 20px;
+  flex-direction: column-reverse;
+  row-gap: 10px;
+  
+
+  @include m.tablet{
+  flex-direction: row;
+  justify-content: space-around;
+    
+  }
+}
+
+.cards_ventas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 0 10px 0 0;
+
+}
+
+.card {
+  width: 150px;
+  height: 220px;
+  padding: 10px 10px 20px 10px;
+  border-radius: 15px;
+  box-shadow: 0px 10px 30px -13px #00000096;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all .2s;
+  cursor: pointer;
+
+  span {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #525252;
+  }
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+.title_card {
+  font-size: 1rem;
+  color: #525252;
+  margin: 0 0 10px 0;
+}
+
+.progress_card {
+  p {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #000;
+  }
+}
+
+.progress {
+  width: 100%;
+  background: #d3d3d3;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  width: 60%;
+  border-radius: 10px;
+  height: 10px;
+  background: #58ecd9;
+}
+
+.container_promociones {
+  display: flex;
+  justify-content: center;
+
+}
+
+.container_card-prom {
+
+}
+
+.card_prom {
+  width: 300px;
+  height: 220px;
+  padding: 20px;
+  background: #353a55;
+  border-radius: 15px;
+  transition: all .5s;
+  &:hover{
+    transform: scale(1.05);
+  }
+
+  p {
+    color: #e0e1e5;
+    font-weight: 400;
+  }
+
+  @include m.tablet{
+    width: 450px;
+
+  }
+}
+
+.title_card-prom {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+
+
+/* From uiverse.io */
+.btn_config-ofertas {
+    margin-top: 25px;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .btn_config-ofertas:hover {
+    background-color: #738cf2;
+    box-shadow: 0px 15px 20px #738cf2;
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .btn_config-ofertas:active {
+    transform: translateY(-1px);
+  }
+
+
+
+
+
+
+
+
+
+//GRAPHICS
+
+.container-graphics{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
+}

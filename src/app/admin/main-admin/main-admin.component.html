@@ -1,6 +1,24 @@
-<app-dashboard></app-dashboard>
 
-<p>
-  main-admin works!
-</p>
+<div class="container-admin">
 
+  <div class="dashboard">
+
+    <app-dashboard></app-dashboard>
+
+  </div>
+  
+  <div class="content">
+    
+      <div class="header">
+        <app-header-admin></app-header-admin>
+      </div>
+      
+
+    <router-outlet></router-outlet>
+
+    <!-- <app-cards-stats></app-cards-stats> -->
+
+
+  </div>
+
+</div>

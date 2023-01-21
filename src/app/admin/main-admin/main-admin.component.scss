@@ -1,0 +1,27 @@
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
+
+.container-admin { 
+
+  
+
+}
+  
+.dashboard { grid-area: dashboard; }
+  
+.header { grid-area: header; }
+  
+.content { 
+  grid-area: content; 
+  position: absolute;
+  right: 0;
+  width: 100%;
+
+  @include m.tablet{
+    width: 80%;
+
+
+  }
+
+}
+  

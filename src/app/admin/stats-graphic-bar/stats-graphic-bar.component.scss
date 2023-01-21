@@ -1,0 +1,13 @@
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
+
+.container-stats-graphic{
+    display:inline-block;
+    padding: 20px;
+    display:none;
+
+    @include m.tablet{
+        display:block;
+    }
+
+}

@@ -90,10 +90,11 @@ export class RegisterComponent implements OnInit {
     const formState:boolean = this.dataForm.invalid
     if (formState) return this.dataForm.markAllAsTouched();
     this.loader = true
-    
+   
     this.http.post(hostUrl + '/login/register' , this.dataForm.value).subscribe((res:any) =>{
 
       this.loader = false
+      
       if (res.errors){
         this.registerState = {
           state:false,
@@ -109,10 +110,10 @@ export class RegisterComponent implements OnInit {
         msg:'Cuenta creada con exito'
       }
 
-      // setTimeout(() => {
-      //   this.statesBox.stateBoxLogin=true
-      //   this.statesBox.stateBoxRegister=false
-      // }, 2500);
+      setTimeout(() => {
+        this.statesBox.stateBoxLogin=true
+        this.statesBox.stateBoxRegister=false
+      }, 2500);
 
 
 

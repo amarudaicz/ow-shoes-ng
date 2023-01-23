@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient} from '@angular/common/http'
 import { CloudinaryService } from 'src/app/services/cloudinary/cloudinary.service';
+import { last } from 'rxjs';
 @Component({
   selector: 'app-form-new-product',
   templateUrl: './form-new-product.component.html',
@@ -12,13 +13,13 @@ export class FormNewProductComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private http:HttpClient, private cloudinary:CloudinaryService) { 
 
     this.dataForm = this.formBuilder.group({
-      title:['', Validators.required],
-      subtitle:['', Validators.required],
-      price:['', Validators.required],
-      priceOffer:['', Validators.required],
-      description:['', Validators.required],
-      imageThumbnail:['', Validators.required],
-      imagesGalery:['', Validators.required],
+      title:[null, Validators.required],
+      subtitle:[null, Validators.required],
+      price:[null, Validators.required],
+      priceOffer:[null, Validators.required],
+      description:[null, Validators.required],
+      imageThumbnail:[null, Validators.required],
+      imagesGalery:[null, Validators.required],
     })
   }
 
@@ -31,10 +32,10 @@ export class FormNewProductComponent implements OnInit {
   imageThumbnailString?:string
 
   imagesGaleryFile:any[] = []
-  imagesGaleryString:string[] = []
+  imagesGaleryString:any[] = []
 
   imgUrl?:any
-  
+   
 
   async sendForm(){
 
@@ -47,9 +48,9 @@ export class FormNewProductComponent implements OnInit {
     const urlThumbnail = this.cloudinary.upload(dataThumbnail).subscribe((res:any) =>{
       console.log(res.url);
       this.imageThumbnailString = res.url;
-      this.dataForm.value.imageThumbnail = this.imageThumbnailString;
-    })
-    
+      this.dataForm.controls['imageThumbnail'] = res.url
+    })  
+
 
     console.log(urlThumbnail);
     
@@ -65,7 +66,7 @@ export class FormNewProductComponent implements OnInit {
 
     //GALERY
     const dataGalery = new FormData()
-    this.imagesGaleryFile.forEach(e => {
+    this.imagesGaleryFile.forEach((e, index) => {
 
       dataGalery.append('file', e);
       dataGalery.append('upload_preset', 'angular_cloudinary');
@@ -77,16 +78,24 @@ export class FormNewProductComponent implements OnInit {
       ).subscribe((res: any) => {
         const url = res.url;
         this.imagesGaleryString.push(url);
+
+        const lastPeticion = this.imagesGaleryFile.length
+        console.log(this.imagesGaleryFile);
+        
+        if (index === lastPeticion - 1) {
+          console.log('ULTIMA PETII XD');
+          // this.dataForm.controls['imagesGalery'] = this.imagesGaleryString
+          
+          const dataForm = { form:this.dataForm.value, imagesGalery:this.imagesGaleryString}
+          console.log(dataForm);
+          
+        }
+
+        
       });
 
     })
-    
-    
-    setTimeout(() => {
-      console.log(this.dataForm.value.imageThumbnail);
-      
-    },10000 );
-      
+  
  
     
   }

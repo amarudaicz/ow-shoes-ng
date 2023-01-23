@@ -1,0 +1,48 @@
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
+
+
+.container-form {
+    background: rgba(255, 255, 255, 0.575);
+    border-radius: 15px;
+
+}
+
+.container-form h2 {
+    margin: 10px 0;
+    color: rgb(49, 49, 49);
+}
+
+.form-new-product {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 20px 0;
+
+    @include m.tablet {
+        grid-template-columns: repeat(2, 2fr);
+        gap: 20px;
+    }
+}
+
+
+
+@media (min-width: 992px) {
+    .textarea-rigth {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    height: 30px;
+    padding: 5px;
+}

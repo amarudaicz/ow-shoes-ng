@@ -6,7 +6,8 @@ import { MainDetailComponent } from './detail-product/main-detail/main-detail.co
 import { MainLoginComponent } from './login/main-login/main-login.component';
 import { MainAdminComponent } from './admin/main-admin/main-admin.component';
 import {CardsStatsComponent} from './admin/cards-stats/cards-stats.component'
-import { ListProductsModelComponent } from './admin/list-products-model/list-products-model.component';
+import {ProductModelCrudComponent} from './admin/product-model-crud/product-model-crud.component';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,8 +22,8 @@ const routes: Routes = [
         component: CardsStatsComponent, // child route component that the router renders
       },
       {
-        path: 'listProducts',
-        component: ListProductsModelComponent, // another child route component that the router renders
+        path: 'products',
+        component: ProductModelCrudComponent, // another child route component that the router renders
       },
     ]
   }

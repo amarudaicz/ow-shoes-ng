@@ -1,0 +1,38 @@
+   
+  <div class="cart_sidebar" [@openCloseCart]="cartVisible ? 'open' : 'closed'" [ngStyle]="{'box-shadow': cartVisible? '#000 -2px 0px 20px 0px' : ''}">
+
+  <div class="items_cart"> 
+        <h2 class="title_cart">Mi carrito</h2>
+        <i id="btnCloseCart" class="fa-solid fa-xmark" (click)="hideCart()"></i>
+
+        <div class="item" *ngFor="let p of cartUser">
+            <div class="info_item">
+                <h3 class="title_item">{{p.title}}</h3>
+                <p class="subtitle_item">{{p.subtitle}}</p>
+                <p class="size_item">Talle: {{p.size_us}}us</p>
+                <p class="color_item">color: {{p.color_arg}}</p>
+                <p class="quantity_item">Cantidad: {{p.quantity}}</p>
+                <span class="price_item">Precio: {{ p.price | currency : '$'}} </span>
+                <input type="button" class="delete_item" id="id" value="Eliminar" />
+            </div>
+
+            <div class="container_img-cart">
+                <img src="https://i.postimg.cc/RVyKZFF8/DETAIL-PRODUCT-AIR-TRAINER.webp" alt="" />
+            </div>
+        </div>
+        
+        <div>
+            <h2 id="total_cart">Total: {{ totalCart | currency:'$' }} </h2>
+        </div>
+ 
+        <div> 
+            <a class="process-payment" href="#">Ir a pagar</a>
+        </div>
+  </div>
+
+</div>
+
+<div class="overlay" (click)="hideCart()" *ngIf="cartVisible">
+
+
+</div>

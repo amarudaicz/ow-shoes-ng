@@ -26,12 +26,56 @@
  <div class="example-element-detail"
       [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
    <div class="example-element-diagram">
-     <div class="example-element-position"> {{element.id}} </div>
+     <div class="example-element-position"> {{element.id}} </div> 
      <div class="example-element-symbol"> {{element.title}} </div>
      <div class="example-element-name"> {{element.price | currency }} </div>
-   </div>
+     <div class="example-element-name"> {{element.subtitle}} </div>
+     <div class="image-thumbnail">
+      
+       <img width="100px" src="{{element.thumbnail_image}}">   
 
-   <app-form-edit-product-model [id]="element.id" ></app-form-edit-product-model>
+     </div>
+    
+      <div class="images-galery"> 
+        <img *ngFor="let img of element.detail_images" src="{{img}}" width=50px>
+      </div>
+    </div>
+
+    <mat-accordion>
+    
+      <mat-expansion-panel>
+    
+        <mat-expansion-panel-header>
+    
+          <mat-panel-title>
+            Editar Producto
+          </mat-panel-title>
+     
+        </mat-expansion-panel-header>
+    
+        <app-form-edit-product-model [id]="element.id" ></app-form-edit-product-model>
+
+    
+      </mat-expansion-panel>
+    
+    
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Crear variaciones del producto
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+          
+        
+        <app-list-products-model></app-list-products-model>
+
+ 
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+    
+
  
  </div>
 </td>

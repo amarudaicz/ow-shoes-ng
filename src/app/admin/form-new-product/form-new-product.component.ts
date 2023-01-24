@@ -61,7 +61,7 @@ export class FormNewProductComponent implements OnInit {
       horizontalPosition: 'end',
       verticalPosition: 'top',
       duration:3000,
-      panelClass:['toast']
+      panelClass:['toast'],
     }
 
     //thumbnail
@@ -91,13 +91,13 @@ export class FormNewProductComponent implements OnInit {
           if (index === lastPeticion - 1) {
             console.log('ULTIMA PETII XD', index);
   
-            const dataUnity = { form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imagenThumbnail:this.imageThumbnailString}
+            const dataUnity = { form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imageThumbnail:this.imageThumbnailString}
             console.log(dataUnity);
   
-            this.toast.open('Producto Agregado Correctamente', undefined, configToast)
-  
-            this.http.post(hostUrl + '/insert-product', dataUnity).subscribe((res:any) => {
+            
+            this.http.post(hostUrl + '/admin/insert-product', dataUnity).subscribe((res:any) => {
               console.log(res);
+              this.toast.open(res.message , undefined, configToast)
             })
             
             this.disableButton = false

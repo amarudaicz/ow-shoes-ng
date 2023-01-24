@@ -1,9 +1,6 @@
 <div class="container-images-comp">
 
   <div class="container-image-full">
-    <!-- <img class="image-product-full"  [src]="imageUrl" /> -->
-
-    <app-loader *ngIf="!stateImage"></app-loader>
 
     <lib-ngx-image-zoom 
       [thumbImage]="imageUrl"
@@ -22,7 +19,7 @@
 
   <ul class="contanier-images-list">
     <li
-      *ngFor="let image of testImages"
+      *ngFor="let image of dataProduct.detail_images"
       class="image-preview"
       (click)="setImage(image)"
       [class.image-preview-active] = "image === imageUrl">

@@ -95,20 +95,23 @@ export class FormEditProductModelComponent implements OnInit {
           if (index === lastPeticion - 1) {
             console.log('ULTIMA PETII XD', index);
   
-            const dataUnity = { id:this.id, form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imagenThumbnail:this.imageThumbnailString}
+            const dataUnity = { id:this.id, form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imageThumbnail:this.imageThumbnailString}
             console.log(dataUnity);
   
-            this.toast.open('Producto Editado Correctamente', undefined, configToast)
-  
-             this.http.post(hostUrl + '/update-product-model', dataUnity).subscribe((res:any) => {
-               console.log(res);
-             })
+            
+            this.http.put(hostUrl + '/admin/update-product-model', dataUnity).subscribe((res:any) => {
+              console.log(res);
+              this.toast.open('Producto Editado Correctamente', undefined, configToast)
+            })
             
             this.disableButton = false
             this.imagesGaleryFile.length = 0
             this.imagesGaleryString = []
             this.dataForm.reset()
             this.dataForm.clearValidators()
+            Object.keys(this.dataForm.controls).forEach((key:any) =>{
+              this.dataForm.controls[key].setErrors(null) 
+            })
             console.log(this.dataForm);
             
             

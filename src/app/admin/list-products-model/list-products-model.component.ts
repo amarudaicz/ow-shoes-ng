@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { HttpClient } from '@angular/common/http';
+import {Subscription, Observable} from 'rxjs'
+import { hostUrl } from 'src/app/app.component';
 
 @Component({
   selector: 'app-list-products-model',
@@ -16,41 +19,38 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 }) 
 
 export class ListProductsModelComponent implements OnInit {
-  
+
+  constructor(private http:HttpClient){
+    
+  }
 
   ngOnInit(){
+    
+    this.http.get(hostUrl + '/products/get-all-products').subscribe((res:any)=>{
+      console.log(res);
+      this.data = res
+      const dataTable = new MatTableDataSource(this.data);
+      this.dataSource = dataTable;
+    })
 
-
-  } 
+    
+    
+  }
   
-  data:any[] = [
-  {
-    id:1,
-    title: 'NIKE AIR MAX',
-    price: 10000,
-    stock: 15,
-    description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
-        atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`,
-  },
-  {
-    id:2,
-    title: 'NIKE AIR MAX EGSO',
-    price: 10000,
-    stock: 15,
-    description: `Hydrogen is a chemical element with symbol H and atomic number 1. With a standard
-        atomic weight of 1.008, hydrogen is the lightest element on the periodic table.`,
-  },
-  ]
+  data:any;
+  dataSource:any
+  
 
-  displayedColumns: string[] = ['id', 'title', 'price', 'stock'];
-  dataSource = new MatTableDataSource(this.data);
+  displayedColumns: string[] = ['id', 'title', 'price', 'subtitle'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: any | null;
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    if (this.dataSource) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
   }
-
+ 
 }
  

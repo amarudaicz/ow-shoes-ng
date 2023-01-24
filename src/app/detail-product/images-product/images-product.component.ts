@@ -1,4 +1,6 @@
 import { Component, Input,OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http'
+import { hostUrl } from 'src/app/app.component';
 
 @Component({
   selector: 'app-images-product',
@@ -6,28 +8,24 @@ import { Component, Input,OnInit } from '@angular/core';
   styleUrls: ['./images-product.component.scss']
 })
 export class ImagesProductComponent implements OnInit {
+  constructor(private http:HttpClient){
 
-  ngOnInit(){
-    setTimeout(() => {
-      this.imageUrl = this.testImages[0]
-    }, 3000);
   }
 
-  @Input() dataProduct:any = {}
+  ngOnInit(){
+    this.http.get(`${hostUrl}/products/get-product/${this.idProduct}`)
+    .subscribe((res:any) => {
+      console.log(res)
+      this.dataProduct = res   
+      this.imageUrl = res.thumbnail_image  
+    }) 
 
-  testImages:string[]=[
-    'https://drifters.com.ar/uploads/product_image/25754/650w_DriftersPDP_DC8903-301_Shot1.jpg',
-    'https://drifters.com.ar/uploads/product_image/25755/650w_DriftersPDP_DC8903-301_Shot2.jpg',
-    'https://drifters.com.ar/uploads/product_image/25756/650w_DriftersPDP_DC8903-301_Shot3.jpg',
-    'https://drifters.com.ar/uploads/product_image/25757/650w_DriftersPDP_DC8903-301_Shot4.jpg',
-    'https://drifters.com.ar/uploads/product_image/25759/650w_DriftersPDP_DC8903-301_Shot6.jpg',
-    'https://drifters.com.ar/uploads/product_image/25760/650w_DriftersPDP_DC8903-301_Shot7.jpg',
-    'https://drifters.com.ar/uploads/product_image/25761/650w_DriftersPDP_DC8903-301_Shot8.jpg',
-    'https://drifters.com.ar/uploads/product_image/25762/650w_DriftersPDP_DC8903-301_Shot9.jpg'
-  ]
-
-
+  }
+  
+  @Input() idProduct?:string
+  dataProduct:any
   imageUrl:string|any
+
   stateImage:boolean = false
 
   setImage(image:string){

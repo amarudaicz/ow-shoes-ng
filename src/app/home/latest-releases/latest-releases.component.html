@@ -8,7 +8,7 @@
   <section class="grid__tienda">
     <div class="grid__tienda--producto" *ngFor="let p of lastestProducts">
 
-      <!-- <img src={{ p.image }}/> -->
+      <img src={{p.thumbnail_image}} alt="image product"/>
 
       <div class="info-product">
         <a class="link-product" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}" href="" >

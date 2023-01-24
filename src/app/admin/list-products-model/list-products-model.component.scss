@@ -1,3 +1,6 @@
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
+
 table {
     width: 100%;
   }
@@ -25,12 +28,19 @@ table {
   }
   
   .example-element-diagram {
-    min-width: auto;
     border: 2px solid black;
     padding: 8px;
     font-weight: lighter;
     margin: 8px 0;
-    height: fit-content;
+    width: 25%;
+    @include m.tablet{
+      min-width: 200px;
+      
+    }
+
+    img{
+      
+    }
   }
   
   .example-element-symbol {
@@ -47,3 +57,33 @@ table {
     opacity: 0.5;
   }
   
+
+  .images-galery{
+    display: grid;
+    place-items:center;
+
+
+    img{
+      margin:0 4px 4px 0;
+
+      display: inline-block;
+      min-height: 40px;
+      object-fit: cover;
+      @include m.tablet{
+        margin:0 4px 0 0;
+
+      }
+    }
+
+    @include m.tablet{
+      text-align: center;
+      display: block;
+
+    }
+
+  }
+
+  .image-thumbnail{
+    text-align: center;
+
+  }

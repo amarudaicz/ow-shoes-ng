@@ -55,9 +55,9 @@
         <input required (change)="capturarGalery($event)" type="file" multiple formControlName="imagesGalery">
       </div>
 
-      <div *ngIf="imagesGaleryString" class="container-imagen">
+      <!-- <div *ngIf="imagesGaleryString" class="container-imagen">
         <img *ngFor="let image of imagesGaleryString" src="{{image}}" style="display: inline-block;" width="150px" alt="">
-      </div>
+      </div> -->
       
  
     </div>
@@ -68,6 +68,10 @@
       <button [disabled]="imagesGaleryFile.length === 0" mat-raised-button color="primary"> 
         Guardar
       </button> 
+
+      <button mat-raised-button color="warn">
+        Eliminar
+      </button>
 
     </div>
  

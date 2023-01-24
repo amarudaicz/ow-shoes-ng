@@ -32,6 +32,7 @@ export class MainDetailComponent implements OnInit {
   getDataProduct(){
     this.rest.get(`${hostUrl}/products/get-product/${this.idProduct}`)
     .subscribe((res:any) => {
+      console.log(res)
       this.dataProduct = res
       this.swatchColor = res.colorSwatches[0]
       

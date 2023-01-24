@@ -9,6 +9,7 @@
         font-size: 2em;
         margin: 30px 0;
     }
+    padding:20px 0;
 }
 
 
@@ -31,7 +32,7 @@
 }
 
 .grid__tienda--producto{
-    min-height: 250px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -44,10 +45,6 @@
         width: 100%;
     }
 
-
-    @include m.tablet{
-        min-height: 300px;
-    }
 }
 
 

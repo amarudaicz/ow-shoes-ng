@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { hostUrl } from 'src/app/app.component';
 
 @Component({
   selector: 'app-select-variations',
@@ -8,9 +10,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SelectVariationsComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute, private http:HttpClient) { }
 
   ngOnInit() {
+    const tables = ['sizes_guide', 'colors_guide']
+    
+    tables.forEach(e =>{
+      this.http.get(hostUrl + '/admin/get-guide-values' + e).subscribe((res:any)=>{
+        if (e === 'sizes_guide') {
+          this.sizeVariations = res
+        }else{
+          this.colorVariations = res
+        }
+      })
+    })
+
+
 
   }
 
@@ -27,7 +42,6 @@ export class SelectVariationsComponent implements OnInit {
       size_arg:39,
       size_us:7
     }
-    
   ] //HACER PETICION DE LA GUIA DE TALLES Y PONER LOS VALORES REALES
 
   colorVariations:any[] = [

@@ -43,41 +43,15 @@
 
     <mat-accordion>
     
-      <mat-expansion-panel>
-    
-        <mat-expansion-panel-header>
-    
-          <mat-panel-title>
-            Editar Producto
-          </mat-panel-title>
-
-          <mat-panel-description>
-            Edita tu producto, no te olvides de guardar!
-          </mat-panel-description>
      
-        </mat-expansion-panel-header>
-    
-        <app-form-edit-product-model [id]="element.id" ></app-form-edit-product-model>
+      <app-form-edit-product-model [id]="element.id" ></app-form-edit-product-model>
 
-    
-      </mat-expansion-panel>
-    
-    
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Crear variaciones del producto
-          </mat-panel-title>
 
-          <mat-panel-description>
-            Elije los talles y colores de tu producto
-          </mat-panel-description>
-        </mat-expansion-panel-header>
+      <app-select-variations [id]="element.id"></app-select-variations>
 
-        <app-select-variations [id]="element.id"></app-select-variations>
- 
-      </mat-expansion-panel>
-    
+      
+      <app-list-products-variants [id]="element.id"></app-list-products-variants>
+
     </mat-accordion>
     
 

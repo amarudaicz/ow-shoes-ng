@@ -26,26 +26,18 @@ export class ListProductsModelComponent implements OnInit {
 
   ngOnInit(){
     
-    // this.http.get(hostUrl + '/products/get-all-products').subscribe((res:any)=>{
-    //   console.log(res);
-    //   this.data = res
-    // })
-    
-    const dataTable = new MatTableDataSource(this.data);
-    this.dataSource = dataTable;
+    this.http.get(hostUrl + '/products/get-all-products').subscribe((res:any)=>{
+      console.log(res);
+      const dataTable = new MatTableDataSource(res);
+      this.dataSource = dataTable;
+      
+    })
     
     
   }
   
-  data:any = [
-    {
-      id:1,
-      title:'asd',
-      price:1000,
-      subtitle:'asd'
-    }
-  ];
-  
+ 
+
   dataSource:any
   
 

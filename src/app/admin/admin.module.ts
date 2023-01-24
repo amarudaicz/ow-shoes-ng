@@ -23,6 +23,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { FormEditProductModelComponent } from './form-edit-product-model/form-edit-product-model.component';
 import { SelectVariationsComponent } from './select-variations/select-variations.component';
+import { ListProductsVariantsComponent } from './list-products-variants/list-products-variants.component';
 
 
 
@@ -38,7 +39,8 @@ import { SelectVariationsComponent } from './select-variations/select-variations
     ProductModelCrudComponent,
     FormNewProductComponent,
     FormEditProductModelComponent,
-    SelectVariationsComponent
+    SelectVariationsComponent,
+    ListProductsVariantsComponent
   ],
 
   imports: [

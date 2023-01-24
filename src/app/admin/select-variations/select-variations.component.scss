@@ -1,0 +1,44 @@
+.container-variations{
+    padding: 15px 0;
+
+}
+
+.container-size-variations{
+    margin: 0 0 15px 0 ;
+
+}
+
+.container-chip{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+
+}
+
+.chip{
+    display: flex;
+    align-items: center;
+    min-width: 70px;
+    padding: 4px 8px;
+    background: #e0e0e0;
+    border-radius: 25px;
+    justify-content: space-around;
+    cursor: pointer;
+    border: none;
+}
+
+.size-chip{
+
+}
+
+.chip-selected{
+    background: #44ff44;
+    transform: scale(1.1);
+    transition: all .2s ease;
+    border: thin solid grey;
+}
+
+.container-button{
+    margin: 15px 0 0 0;
+}

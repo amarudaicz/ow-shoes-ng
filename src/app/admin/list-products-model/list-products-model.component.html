@@ -50,6 +50,10 @@
           <mat-panel-title>
             Editar Producto
           </mat-panel-title>
+
+          <mat-panel-description>
+            Edita tu producto, no te olvides de guardar!
+          </mat-panel-description>
      
         </mat-expansion-panel-header>
     
@@ -64,12 +68,13 @@
           <mat-panel-title>
             Crear variaciones del producto
           </mat-panel-title>
+
+          <mat-panel-description>
+            Elije los talles y colores de tu producto
+          </mat-panel-description>
         </mat-expansion-panel-header>
 
-          
-        
-        <app-list-products-model></app-list-products-model>
-
+        <app-select-variations [id]="element.id"></app-select-variations>
  
       </mat-expansion-panel>
     

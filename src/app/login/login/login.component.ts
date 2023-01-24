@@ -71,9 +71,9 @@ export class LoginComponent implements OnInit {
     console.log(this.dataForm);
     const formState:boolean = this.dataForm.invalid
 
-    if (formState) this.dataForm.markAllAsTouched();
+    if (formState) return this.dataForm.markAllAsTouched();
     
-    if (!formState) {
+  
       this.loader = true
       
       this.http.post(hostUrl + '/login/go', this.dataForm.value).subscribe((res:any)=>{
@@ -108,7 +108,6 @@ export class LoginComponent implements OnInit {
     }
       
 
-  }
 
   processInput(input:string){
     return this.dataForm.controls[input].errors && this.dataForm.controls[input].touched

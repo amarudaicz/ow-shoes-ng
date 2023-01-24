@@ -17,7 +17,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
+import {MatTableModule} from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { FormEditProductModelComponent } from './form-edit-product-model/form-edit-product-model.component';
 
 
 
@@ -31,7 +35,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     StatsGraphicComponent, 
     StatsGraphicBarComponent,
     ProductModelCrudComponent,
-    FormNewProductComponent
+    FormNewProductComponent,
+    FormEditProductModelComponent
   ],
 
   imports: [
@@ -43,8 +48,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTooltipModule
-    
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatIconModule
+
+      
     
   ],
  

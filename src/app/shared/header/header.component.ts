@@ -1,10 +1,8 @@
 import { AfterContentChecked, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CartUserService } from 'src/app/services/cart-user.service';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
-import { UserService } from 'src/app/services/user/user.service';
 import {MatSnackBar, MatSnackBarConfig, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition,} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLogin/handle-animation-login.service';
 
 @Component({
   selector: 'app-header',
@@ -16,8 +14,13 @@ import { HandleAnimationLoginService } from 'src/app/services/handleAnimationLog
  
 export class HeaderComponent implements OnInit, AfterContentChecked {
 
-  constructor(private route:Router, private storage:LocalStorageService, private cartService:CartUserService, private userService:UserService, private toast:MatSnackBar, private statesBoxLogin:HandleAnimationLoginService){}
+  constructor(private route:Router, 
+    private storage:LocalStorageService, 
+    private cartService:CartUserService, 
+    private toast:MatSnackBar)
+  {}
 
+  
   ngOnInit(): void {
     this.userData = this.storage.getItem('user')
     console.log(this.userData);

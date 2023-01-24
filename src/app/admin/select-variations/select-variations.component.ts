@@ -14,7 +14,7 @@ export class SelectVariationsComponent implements OnInit {
 
   ngOnInit() {
     const tables = ['sizes_guide', 'colors_guide']
-    
+
     tables.forEach(e =>{
       this.http.get(hostUrl + '/admin/get-guide-values' + e).subscribe((res:any)=>{
         if (e === 'sizes_guide') {
@@ -30,7 +30,7 @@ export class SelectVariationsComponent implements OnInit {
   }
 
   @Input() id:any
-  
+   
   sizeVariations:any[] = [
     {
       id:1,

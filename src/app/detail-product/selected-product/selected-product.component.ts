@@ -18,7 +18,7 @@ export class SelectedProductComponent implements OnInit {
 
   constructor(private storage:LocalStorageService){
 
-
+    
   }
 
 

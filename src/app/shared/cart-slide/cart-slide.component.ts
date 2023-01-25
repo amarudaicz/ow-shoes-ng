@@ -66,10 +66,10 @@ export class CartSlideComponent implements OnInit, AfterContentChecked {
 
 
   ngAfterContentChecked(): void {
-    // this.getCart()
+    this.getCart()
   }
 
-
+  
 
   //variabels
   public totalCart: number = 0;

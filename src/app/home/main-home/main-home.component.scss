@@ -5,6 +5,7 @@
 }
 
 .two-banners{
+    margin: 20px 0;
     width: 100%;
 }
 
@@ -23,16 +24,18 @@
 .banner-two{
 
     width: 50%;
-    &:hover{
-        background: #000;
-        opacity: .7;
-        
-    }
+    background: #000;
+
+  
 
 }
 
 .img-banner-two{
-
+    
     width: 100%;
     object-fit: cover;
+
+    &:hover{
+        opacity: .7;
+    }
 }

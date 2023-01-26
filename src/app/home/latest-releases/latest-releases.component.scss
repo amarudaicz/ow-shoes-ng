@@ -27,10 +27,6 @@
     width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    background-size:contain;
-    background-position: top;
-    background-repeat: no-repeat;
     font-family: v.$sec;
 
     img{
@@ -38,8 +34,8 @@
     }
 
     &:hover{
-        box-shadow: #353535 1px 1px 1px 1px;
-
+        box-shadow: #878787 0px 0px 5px 0.5px
+        
     }
 
 }

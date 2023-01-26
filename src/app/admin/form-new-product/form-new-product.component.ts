@@ -69,7 +69,6 @@ export class FormNewProductComponent implements OnInit {
 
     this.cloudinary.upload(dataThumbnail).subscribe((res:any) =>{
       this.imageThumbnailString = res.url;
-      this.dataForm.reset()
 
       //GALERYYYYYYYYY
       const dataGalery = new FormData()
@@ -82,6 +81,7 @@ export class FormNewProductComponent implements OnInit {
         this.cloudinary.upload(dataGalery).subscribe((res:any)=>{
           const url = res.url;
           this.imagesGaleryString?.push(url);  
+            
           const lastPeticion = this.imagesGaleryFile.length
 
           if (index === lastPeticion - 1) {
@@ -95,14 +95,17 @@ export class FormNewProductComponent implements OnInit {
               console.log(res);
               this.toast.open(res.message , undefined, configToast)
               this.disableButton = false
+              this.dataForm.reset()
             })
             
             this.imagesGaleryFile.length = 0
             this.imagesGaleryString = []
-            this.dataForm.controls['imagesGalery'].reset()
-            this.dataForm.clearValidators()
-            console.log(this.dataForm);
-            
+
+
+            setTimeout(() => {
+              location.reload()
+            }, 2000);
+
             
           }
         })

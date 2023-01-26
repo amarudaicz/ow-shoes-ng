@@ -12,12 +12,13 @@ import { CloudinaryService } from 'src/app/services/cloudinary/cloudinary.servic
 })
 export class FormEditProductModelComponent implements OnInit {
   @Input() id:any
+  @Input() product:any
 
-  ngOnInit(){
-    console.log(this.id);
+  ngOnInit(){ 
+
+    this.loadDataForm()
+
   } 
-
-
 
   constructor(
     private formBuilder:FormBuilder, 
@@ -47,20 +48,26 @@ export class FormEditProductModelComponent implements OnInit {
   disableButton:boolean = false
   base64Thumbnail:any
 
-  async sendForm(){
-    
+  loadDataForm(){
 
-    console.log(this.id);
+    this.dataForm.patchValue({
+      title:this.product.title,
+      subtitle:this.product.subtitle,
+      price:this.product.price,
+      priceOffer:this.product.price_offer,
+      description:'this.product.description', 
+    })
     
-    if (this.imagesGaleryFile.length === 0){
-      console.log(this.dataForm);
+  }
+
+  async sendForm(){
+
+    if (this.dataForm.invalid){
       return
     } 
 
-    console.log(this.dataForm);
-    
-
     this.disableButton = true
+
     const configToast:MatSnackBarConfig = {
       horizontalPosition: 'end',
       verticalPosition: 'top',
@@ -73,7 +80,6 @@ export class FormEditProductModelComponent implements OnInit {
     dataThumbnail.append('file', this.imageThumbnailFile)
     dataThumbnail.append('upload_preset', 'angular_cloudinary')
     dataThumbnail.append('cloud_name', 'diyorb8ka')
-
 
     this.cloudinary.upload(dataThumbnail).subscribe((res:any) =>{
       console.log(res);
@@ -108,12 +114,9 @@ export class FormEditProductModelComponent implements OnInit {
             this.imagesGaleryFile.length = 0
             this.imagesGaleryString = []
             this.dataForm.reset()
-            this.dataForm.clearValidators()
             Object.keys(this.dataForm.controls).forEach((key:any) =>{
               this.dataForm.controls[key].setErrors(null) 
             })
-            console.log(this.dataForm);
-            
             
           }
         })
@@ -137,5 +140,19 @@ capturarGalery(event:any){
   }    
 
 }
+
+
+deleteProduct(){
+
+  this.http.delete(hostUrl + '/admin/delete-product/' + this.id).subscribe((res:any)=>{
+    console.log(res);
+    this.toast.open('Producto Eliminado')
+    setTimeout(() => {
+      
+      location.reload()
+    }, 2000);
+  })
+} 
+
 
 }

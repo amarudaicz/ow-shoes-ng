@@ -66,8 +66,8 @@
 
     <div class="inputs-group">
 
-      <button [disabled]="imagesGaleryFile.length === 0 || disableButton" mat-raised-button color="primary"> 
-        Guardar
+      <button [disabled]="dataForm.invalid || disableButton" mat-raised-button color="primary"> 
+        {{disableButton ? 'Cargando' : 'Guardar'}}
       </button> 
 
     </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
@@ -30,14 +30,13 @@ export class ListProductsModelComponent implements OnInit {
       console.log(res);
       const dataTable = new MatTableDataSource(res);
       this.dataSource = dataTable;
-      
     })
     
     
   }
   
  
-
+  
   dataSource:any
   
 

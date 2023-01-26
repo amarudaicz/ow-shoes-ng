@@ -81,12 +81,12 @@
       
       <div class="inputs-group">  
   
-        <button [disabled]="imagesGaleryFile.length === 0" mat-raised-button color="primary"> 
+        <button type="submit" [disabled]="imagesGaleryFile.length === 0 || disableButton" mat-raised-button color="primary"> 
           Guardar
         </button> 
   
-        <button mat-raised-button color="warn">
-          Eliminar
+        <button (click)="deleteProduct()" style="margin: 0 0 0 20px;" type="button" mat-raised-button color="warn">
+          Eliminar Producto
         </button>
   
       </div>

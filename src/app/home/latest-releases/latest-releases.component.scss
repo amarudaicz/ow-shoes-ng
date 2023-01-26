@@ -2,7 +2,7 @@
 @use '../../../assets/sass/variables.scss' as v;
 
 .tienda{
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
 
     h2{ 
@@ -17,7 +17,7 @@
 .grid__tienda{
     display:flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 20px;
     cursor: pointer;
 

@@ -6,7 +6,8 @@
   <h3 class="ult-lanzamientos">Ultimos lanzamientos</h3>
 
   <section class="grid__tienda">
-    <div class="grid__tienda--producto" *ngFor="let p of lastestProducts">
+    
+    <div class="grid__tienda--producto" *ngFor="let p of lastestProducts" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}">
 
       <img src={{p.thumbnail_image}} alt="image product"/>
 

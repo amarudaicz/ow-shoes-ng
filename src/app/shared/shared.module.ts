@@ -11,13 +11,15 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     LoaderComponent,
     CartSlideComponent,
-    AlertDeleteItemCartDirective 
+    AlertDeleteItemCartDirective,
+    FooterComponent 
      
   ],
   
@@ -33,7 +35,8 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   exports:[
     HeaderComponent,
-    LoaderComponent, 
+    LoaderComponent,
+    FooterComponent
 
   ] 
 

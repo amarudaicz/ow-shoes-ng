@@ -9,13 +9,18 @@ import { AppRoutingModule } from '../app-routing.module';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { SharedModule } from '../shared/shared.module';
+import { SwiperModule } from "swiper/angular";
+import { FeaturedProductsComponent } from './featured-products/featured-products.component';
 
+ 
 @NgModule({
   declarations: [
     BannerPegasusComponent,    
     BannerRunningComponent,
     LatestReleasesComponent, 
     MainHomeComponent,
+    FeaturedProductsComponent
+
     
   ],
   imports: [
@@ -24,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     AppRoutingModule,
     MatIconModule,
     MatBadgeModule,
-    SharedModule
+    SharedModule,
+    SwiperModule
   ],
 
   exports:[

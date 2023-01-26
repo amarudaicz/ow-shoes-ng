@@ -51,10 +51,6 @@ export class FormNewProductComponent implements OnInit {
       return
     } 
 
-    console.log(this.dataForm);
-    
-    
-
     this.disableButton = true
 
     const configToast:MatSnackBarConfig = {
@@ -72,8 +68,8 @@ export class FormNewProductComponent implements OnInit {
 
 
     this.cloudinary.upload(dataThumbnail).subscribe((res:any) =>{
-      console.log(res);
       this.imageThumbnailString = res.url;
+      this.dataForm.reset()
 
       //GALERYYYYYYYYY
       const dataGalery = new FormData()
@@ -84,10 +80,10 @@ export class FormNewProductComponent implements OnInit {
         dataGalery.append('cloud_name', 'diyorb8ka');
 
         this.cloudinary.upload(dataGalery).subscribe((res:any)=>{
-
           const url = res.url;
           this.imagesGaleryString?.push(url);  
           const lastPeticion = this.imagesGaleryFile.length
+
           if (index === lastPeticion - 1) {
             console.log('ULTIMA PETII XD', index);
   
@@ -98,13 +94,12 @@ export class FormNewProductComponent implements OnInit {
             this.http.post(hostUrl + '/admin/insert-product', dataUnity).subscribe((res:any) => {
               console.log(res);
               this.toast.open(res.message , undefined, configToast)
+              this.disableButton = false
             })
             
-            this.disableButton = false
             this.imagesGaleryFile.length = 0
             this.imagesGaleryString = []
             this.dataForm.controls['imagesGalery'].reset()
-            this.dataForm.reset()
             this.dataForm.clearValidators()
             console.log(this.dataForm);
             
@@ -113,57 +108,8 @@ export class FormNewProductComponent implements OnInit {
         })
       })
 
-
-      //GALERYYY*******************
-      // this.imagesGaleryFile.forEach((e, index) => {
-  
-      //   dataGalery.append('file', e);
-      //   dataGalery.append('upload_preset', 'angular_cloudinary');
-      //   dataGalery.append('cloud_name', 'diyorb8ka');
-  
-      //   this.http.post(
-      //     'https://api.cloudinary.com/v1_1/diyorb8ka/upload',
-      //     dataGalery
-      //   ).subscribe((res: any) => {
-      //     const url = res.url;
-      //     this.imagesGaleryString?.push(url);  
-      //     const lastPeticion = this.imagesGaleryFile.length
-      //     if (index === lastPeticion - 1) {
-      //       console.log('ULTIMA PETII XD', index);
-  
-      //       const dataUnity = { form:this.dataForm.value, imagesGalery:this.imagesGaleryString, imagenThumbnail:this.imageThumbnailString}
-      //       console.log(dataUnity);
-  
-      //       this.toast.open('Producto Agregado Correctamente', undefined, configToast)
-  
-      //       // this.http.post(hostUrl + '/insert-product', dataUnity).subscribe((res:any) => {
-      //       //   console.log(res);
-      //       // })
-            
-      //       this.disableButton = false
-      //       this.imagesGaleryFile.length = 0
-      //       this.imagesGaleryString = []
-      //       this.dataForm.controls['imagesGalery'].reset()
-              
-         
-      //       Object.keys(this.dataForm.controls).forEach(key => {
-      //         this.dataForm.controls[key].setErrors(null)
-      //       }); 
-  
-            
-      //     }
-      //   });
-
-      // })
-    
-
-
     })
 
-    
-    //GALERY
-   
- 
     
   }
 

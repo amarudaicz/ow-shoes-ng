@@ -31,39 +31,9 @@ export class SelectVariationsComponent implements OnInit {
   }
 
   @Input() id:any
-<<<<<<< HEAD
-   
-  sizeVariations:any[] = [
-    {
-      id:1,
-      size_arg:38,
-      size_us:6.5
-    },
-    {
-      id:2,
-      size_arg:39,
-      size_us:7
-    }
-  ] //HACER PETICION DE LA GUIA DE TALLES Y PONER LOS VALORES REALES
-
-  colorVariations:any[] = [
-    {
-      id:1,
-      color_arg:'Verde', 
-      color_us:'Green'
-    },
-    {
-      id:2,
-      color_arg:'Rojo',
-      color_us:'Red'
-    }
-  ]
-
-=======
   
   sizeVariations:any[] = [] //HACER PETICION DE LA GUIA DE TALLES Y PONER LOS VALORES REALES
   colorVariations:any[] = []
->>>>>>> 8c2ef24cc75d30836a201da991c9ca8415a88e9c
   sizeVariationsSelect:any[] = []
   colorVariationsSelect:any[] = []
   buttonDisabled:boolean = false
@@ -78,7 +48,7 @@ export class SelectVariationsComponent implements OnInit {
          this.colorVariationsSelect = newVariations
          return 
        }
-
+ 
        this.colorVariationsSelect.push(value)
        console.log(this.colorVariationsSelect);
        return

@@ -1,0 +1,89 @@
+@use '../../../assets/sass/mixins.scss' as m;
+@use '../../../assets/sass/variables.scss' as v;
+
+
+
+.slider-featured-products{
+    
+    h3{ 
+        font-size: 2em;
+        text-align: center;
+        text-transform: uppercase;        
+        margin: 50px 0 20px 0 ;
+    }
+
+    padding: 0 0 100px 0;
+
+
+}
+
+.container-slider{
+
+
+}
+
+
+
+.grid__tienda--producto{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    font-family: v.$sec;
+    margin: 10px 5px 35px 5px;
+    cursor: grab;
+
+    &:active{
+        cursor: grabbing;
+    }
+
+    img{
+        width: 100%;
+    }
+
+    &:hover{
+        box-shadow: #878787 0px 0px 5px 0.5px
+
+    }
+
+}
+
+
+.info-product{
+    margin-top: 15px;
+    text-align: start; 
+    padding: 0 10px;
+
+}
+
+
+.title-product{
+    margin: 0 0 6px 0;
+    font-size: 1rem;
+    display: block;
+    text-transform:uppercase;
+    
+ 
+}
+
+.subtitle-product{
+    color: #B5B5B5;
+}
+
+.price-product{
+    margin: 0 10px 0 0;    
+}
+
+.cuota-product{
+    font-size: 14px;
+
+}
+
+.link-product{
+    color:#1E1B17;
+    cursor:pointer;
+    &:hover{
+        text-decoration: underline;
+        
+    }
+
+}

@@ -18,6 +18,7 @@
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 20px;
 
 }
 
@@ -37,7 +38,7 @@
 
     &:hover{
         box-shadow: #353535 1px 1px 1px 1px;
-        
+
     }
 
 }

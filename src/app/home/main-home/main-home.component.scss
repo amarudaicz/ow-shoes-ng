@@ -1,0 +1,41 @@
+.content{
+    width: 80%;
+    margin: 0 auto;
+
+}
+
+.two-banners{
+    margin: 20px 0;
+    width: 100%;
+}
+
+.container-two-banners{
+
+
+    display: flex;
+    justify-content: center;
+    column-gap: 15px;
+
+
+
+}
+
+
+.banner-two{
+
+    width: 50%;
+    background: #000;
+
+  
+
+}
+
+.img-banner-two{
+    
+    width: 100%;
+    object-fit: cover;
+
+    &:hover{
+        opacity: .7;
+    }
+}

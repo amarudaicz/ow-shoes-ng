@@ -1,40 +1,58 @@
-<div class="container-variations">
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Crear variaciones del producto
+    </mat-panel-title>
 
-  <p>Talles:</p>
+    <mat-panel-description>
+      Elije los talles y colores de tu producto
+    </mat-panel-description>
+  </mat-expansion-panel-header>
 
-  <div class="container-size-variations container-chip">
-      <input 
-      *ngFor="let size of sizeVariations" 
-      class="size-chip chip" 
-      type="button" 
-      value="{{size.size_arg}}"
-      id="{{size.id}}"
-      (click)="addChipValue($event)"
-      >
+  <div class="container-variations">
+  
+    <p>Talles:</p>
+  
+    <div class="container-size-variations container-chip">
+        <input 
+        *ngFor="let size of sizeVariations" 
+        matTooltip="Talle {{size.size_arg}}ARG equivale a {{size.size_us}}US" 
+        [matTooltipPosition]="'above'"
+        class="size-chip chip" 
+        type="button" 
+        value="{{size.size_arg}}"
+        id="{{size.id}}"
+        (click)="addChipValue($event)"
+        
+        >
+    </div>
+  
+   
+    <p>Colores:</p>
+    <div class="container-color-variations container-chip">
+        <input 
+        
+        *ngFor="let color of colorVariations" 
+        class="color-chip chip" 
+        type="button" 
+        value="{{color.color_arg}}"
+        id="{{color.id}}"
+        (click)="addChipValue($event)"
+        >
+    </div>
+  
+    
+    <div class="container-button">
+      <button [disabled]="colorVariationsSelect.length === 0 || sizeVariationsSelect.length === 0 || buttonDisabled " mat-raised-button (click)="sendData()" color="primary"> 
+        Guardar
+      </button> 
+  
+    </div>
+  
+  
+  
+  
   </div>
 
 
-  <p>Colores:</p>
-  <div class="container-color-variations container-chip">
-      <input 
-      *ngFor="let color of colorVariations" 
-      class="color-chip chip" 
-      type="button" 
-      value="{{color.color_arg}}"
-      id="{{color.id}}"
-      (click)="addChipValue($event)"
-      >
-  </div>
-
-
-  <div class="container-button">
-    <button [disabled]="colorVariationsSelect.length === 0 || sizeVariationsSelect.length === 0 " mat-raised-button (click)="sendData()" color="primary"> 
-      Guardar
-    </button> 
-
-  </div>
-
-
-
-
-</div>
+</mat-expansion-panel>

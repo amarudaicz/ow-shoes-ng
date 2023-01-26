@@ -2,32 +2,24 @@
 @use '../../../assets/sass/variables.scss' as v;
 
 .tienda{
-    width: 95%;
+    width: 100%;
     margin: 0 auto;
 
     h2{ 
         font-size: 2em;
         margin: 30px 0;
     }
+
     padding:20px 0;
 }
 
 
 .grid__tienda{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-
-    @include m.tablet{
-        grid-template-columns: repeat(4,1fr);
-        row-gap: 50px;
-    }
-
-
-    @media (max-width:354px){
-        grid-template-columns: repeat(1,1fr);
-
-    }
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
 
 }
 
@@ -35,14 +27,16 @@
     width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    background-size:contain;
-    background-position: top;
-    background-repeat: no-repeat;
     font-family: v.$sec;
+    
 
     img{
         width: 100%;
+    }
+
+    &:hover{
+        box-shadow: #878787 0px 0px 5px 0.5px
+
     }
 
 }
@@ -50,7 +44,9 @@
 
 .info-product{
     margin-top: 15px;
-    text-align: start;
+    text-align: start; 
+    padding: 0 10px;
+
 }
 
 

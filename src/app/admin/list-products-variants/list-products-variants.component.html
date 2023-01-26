@@ -1,0 +1,84 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Variaciones del producto </mat-panel-title>
+
+    <mat-panel-description>
+      Aqui estaran los talles y colores de tu producto
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="container-table">
+    <table class="table-data">
+      <tbody class="t-body list-variants">
+        <tr class="cols-table">
+          <th class="col-data"></th>
+          <th class="col-data">SKU</th>
+          <th class="col-data">Id</th>
+          <th class="col-data">Precio</th>
+          <th class="col-data">Talle</th>
+          <th class="col-data">Color</th>
+          <th class="col-data">Stock</th>
+          <th class="col-data">Unidades vendidas</th>
+          <th class="col-data"></th>
+        </tr>
+      </tbody>
+
+    <tbody *ngFor="let row of data">
+
+      <td >
+
+        <div class="container-check-product">
+          <label class="label-check-product" for="shoe${id}"></label>
+          <input
+            type="checkbox"
+            class="check-product-variant"
+            value="${id}"
+            id="shoe${id}"
+          />
+        </div>
+      </td>
+
+      <td class="row-data">{{row.sku}}</td>
+      <td class="row-data">#{{row.id}} </td>
+
+      <td class="row-data">
+        <div class="container-price">
+          <span class="row-price${id}">{{row.price | currency}}</span>
+
+          <i
+            class="fa-solid fa-pen-to-square btn-edit-price-variant"
+            data-idvariant="${id}"
+          ></i>
+        </div>
+      </td>
+
+      <td class="row-data">{{row.size_arg}}</td>
+      <td class="row-data">{{row.color_arg}}</td>
+
+      <td class="row-data">
+        <div class="container-stock">
+          <span class="row-stock${id} row-stock">{{row.stock}}</span>
+
+          <input
+            type="number"
+            class="input-edit-stock"
+            data-idvariant="${id}"
+          />
+        </div>
+      </td>
+
+      <td class="row-data"> 10 </td>
+
+      <td>
+        <div class="container-btn-list">
+            <button mat-raised-button color="primary"> 
+                Eliminar
+            </button> 
+        </div>
+      </td>
+
+      </tbody>
+
+    </table>
+  </div>
+</mat-expansion-panel>

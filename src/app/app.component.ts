@@ -9,5 +9,5 @@ export class AppComponent {
   title = 'app';
 }
 
-export const hostUrl = 'http://localhost:3000'
+export const hostUrl = 'https://owshoes.onrender.com'
 

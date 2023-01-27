@@ -88,6 +88,7 @@
 .container-galery-preview{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     column-gap: 15px;
     padding:  0 10px;
 }

@@ -23,7 +23,7 @@ export class LatestReleasesComponent implements OnInit {
     this.rest.get(`${hostUrl}/products/get-all-products`).subscribe(res =>{
       this.lastestProducts = res
 
-      this.lastestProducts = this.lastestProducts.splice(0, 8)
+      this.lastestProducts = this.lastestProducts.splice(0, 10)
     })
   }
 

@@ -31,7 +31,7 @@
     .textarea-rigth {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        row-gap:15px;
     }
 }
 
@@ -118,7 +118,7 @@
 .container-galery-preview{
     display: flex;
     justify-content: center;
-    column-gap: 15px;
+    gap: 10px;
     padding:  0 10px;
     flex-wrap: wrap;
 
@@ -131,5 +131,6 @@
 .preview-product{
     margin: 0 auto;
     overflow: hidden;
-
+    box-shadow: #878787 0px 0px 5px 0.5px
+    
 }

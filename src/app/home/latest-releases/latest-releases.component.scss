@@ -64,7 +64,9 @@
 }
 
 .price-product{
-    margin: 0 10px 0 0;    
+    margin: 0 10px 0 0;
+    display: block;
+
 }
 
 .cuota-product{
@@ -83,34 +85,9 @@
 }
 
 
-
-.block__inputs--tienda{
+.container-galery-preview{
     display: flex;
-    row-gap: 10px;
-    margin-top: 15px;
-    align-items: center;
-    column-gap: 10px;
     justify-content: center;
-
-    input{ 
-        font-size: 1em;
-        padding: 5px 30px;
-        border: none;
-        color: white;
-        border-radius:25px;
-        cursor: pointer;
-        font-weight: 300;
-        background: v.$rosa-botones;
-    }
-
-    i{
-        font-size: 1em;
-        padding: 5px 10px;
-        color: #353535;
-        background: #D4D4D4;
-        border-radius: 20px;
-    }
-
-
+    column-gap: 15px;
+    padding:  0 10px;
 }
-

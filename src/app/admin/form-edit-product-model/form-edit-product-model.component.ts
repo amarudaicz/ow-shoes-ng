@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { hostUrl } from 'src/app/app.component';
@@ -15,8 +15,12 @@ export class FormEditProductModelComponent implements OnInit {
   @Input() product:any
 
   ngOnInit(){ 
-
+    
+    console.log(this.product);
+    
     this.loadDataForm()
+    console.log(this.imagesGaleryString);
+    
 
   } 
 
@@ -39,14 +43,15 @@ export class FormEditProductModelComponent implements OnInit {
 
 
   dataForm:FormGroup
-  imageThumbnailFile:any
+  imageThumbnailFile?:any
+  imagesGaleryFile?:any[] = []
+  
   imageThumbnailString?:string
-
-  imagesGaleryFile:any[] = []
   imagesGaleryString?:any[] = []
 
   disableButton:boolean = false
   base64Thumbnail:any
+  @Output() updateList = new EventEmitter<any>()
 
   loadDataForm(){
 
@@ -55,16 +60,15 @@ export class FormEditProductModelComponent implements OnInit {
       subtitle:this.product.subtitle,
       price:this.product.price,
       priceOffer:this.product.price_offer,
-      description:'this.product.description', 
+      description:this.product.descripcion_1, 
     })
+
+    this.imageThumbnailString = this.product.thumbnail_image,
+    this.imagesGaleryString = this.product.detail_images
     
   }
 
   async sendForm(){
-
-    if (this.dataForm.invalid){
-      return
-    } 
 
     this.disableButton = true
 
@@ -80,49 +84,69 @@ export class FormEditProductModelComponent implements OnInit {
     dataThumbnail.append('file', this.imageThumbnailFile)
     dataThumbnail.append('upload_preset', 'angular_cloudinary')
     dataThumbnail.append('cloud_name', 'diyorb8ka')
+    
+    if(this.imageThumbnailFile){
 
-    this.cloudinary.upload(dataThumbnail).subscribe((res:any) =>{
-      console.log(res);
-      this.imageThumbnailString = res.url;
-
-      //GALERYYYYYYYYY
-      const dataGalery = new FormData()
-      this.imagesGaleryFile.forEach((e:any, index:number) => {
-
-        dataGalery.append('file', e);
-        dataGalery.append('upload_preset', 'angular_cloudinary');
-        dataGalery.append('cloud_name', 'diyorb8ka');
-
-        this.cloudinary.upload(dataGalery).subscribe((res:any)=>{
-
-          const url = res.url;
-          this.imagesGaleryString?.push(url);  
-          const lastPeticion = this.imagesGaleryFile.length
-          if (index === lastPeticion - 1) {
-            console.log('ULTIMA PETII XD', index);
-  
-            const dataUnity = { id:this.id, form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imageThumbnail:this.imageThumbnailString}
-            console.log(dataUnity);
-  
+      this.cloudinary.upload(dataThumbnail).subscribe((res:any) =>{
+        console.log(res);
+        this.imageThumbnailString = res.url;
+        
+        //GALERYYYYYYYYY
+        if (this.imagesGaleryFile) {
+          
+          const dataGalery = new FormData()
+          this.imagesGaleryFile.forEach((e:any, index:number) => {
             
-            this.http.put(hostUrl + '/admin/update-product-model', dataUnity).subscribe((res:any) => {
-              console.log(res);
-              this.toast.open('Producto Editado Correctamente', undefined, configToast)
+            dataGalery.append('file', e);
+            dataGalery.append('upload_preset', 'angular_cloudinary');
+            dataGalery.append('cloud_name', 'diyorb8ka');
+    
+            this.cloudinary.upload(dataGalery).subscribe((res:any)=>{
+    
+              const url = res.url;
+              this.imagesGaleryString?.push(url);  
+              const lastPeticion = this.imagesGaleryFile!.length
+              if (index === lastPeticion - 1) {
+                console.log('ULTIMA PETII XD', index);
+      
+                const dataUnity = { id:this.id, form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imageThumbnail:this.imageThumbnailString}
+                console.log(dataUnity);
+      
+
+                this.http.put(hostUrl + '/admin/update-product-model', dataUnity).subscribe((res:any) => {
+                  console.log(res);
+                  this.toast.open('Producto Editado Correctamente', undefined, configToast)
+                })
+                
+                this.disableButton = false
+                this.imagesGaleryFile!.length = 0
+                this.imagesGaleryString = []
+                this.dataForm.reset()
+                Object.keys(this.dataForm.controls).forEach((key:any) =>{
+                  this.dataForm.controls[key].setErrors(null) 
+                })
+                
+              }
             })
-            
-            this.disableButton = false
-            this.imagesGaleryFile.length = 0
-            this.imagesGaleryString = []
-            this.dataForm.reset()
-            Object.keys(this.dataForm.controls).forEach((key:any) =>{
-              this.dataForm.controls[key].setErrors(null) 
-            })
-            
-          }
-        })
-      })
+          
+          })
+        }
+  
+    })
+  }
+
+  const dataUnity = { id:this.id, form:this.dataForm.value, imagesGalery:JSON.stringify(this.imagesGaleryString), imageThumbnail:this.imageThumbnailString}
+  console.log(dataUnity);
+
+
+  this.http.put(hostUrl + '/admin/update-product-model', dataUnity).subscribe((res:any) => {
+    console.log(res);
+    this.toast.open('Producto Editado Correctamente', undefined, configToast)
+
+    this.updateList.emit(true)
 
   })
+
 
 }
  
@@ -136,7 +160,7 @@ capturarThumbnail(event:any): void{
 capturarGalery(event:any){
   const files = event.target.files
   for (let i = 0; i < files.length; i++) {
-    this.imagesGaleryFile.push(files[i])
+    this.imagesGaleryFile!.push(files[i])
   }    
 
 }
@@ -144,13 +168,12 @@ capturarGalery(event:any){
 
 deleteProduct(){
 
+  this.disableButton = true
   this.http.delete(hostUrl + '/admin/delete-product/' + this.id).subscribe((res:any)=>{
     console.log(res);
-    this.toast.open('Producto Eliminado')
-    setTimeout(() => {
-      
-      location.reload()
-    }, 2000);
+    this.toast.open('Producto Eliminado', 'Cerrar')
+    
+    this.updateList.emit(true) 
   })
 } 
 

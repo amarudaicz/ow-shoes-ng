@@ -34,13 +34,13 @@ export class ListProductsModelComponent implements OnInit {
     
     
   }
-  
+   
  
   
   dataSource:any
   
 
-  displayedColumns: string[] = ['id', 'title', 'price', 'subtitle'];
+  displayedColumns: string[] = ['id', 'title', 'subtitle','price' ];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: any | null;
 
@@ -50,6 +50,17 @@ export class ListProductsModelComponent implements OnInit {
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
   }
- 
+
+
+
+  typeColumn(element:any){
+
+    if(typeof(element) === 'string') return '';
+    else if(element < 100) return '#'
+    else return '$'
+
+  }
+  
 }
+ 
  

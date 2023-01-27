@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { hostUrl } from 'src/app/app.component';
@@ -31,6 +31,7 @@ export class SelectVariationsComponent implements OnInit {
   }
 
   @Input() id:any
+  @Output() updateList = new EventEmitter<any>()
   
   sizeVariations:any[] = [] //HACER PETICION DE LA GUIA DE TALLES Y PONER LOS VALORES REALES
   colorVariations:any[] = []
@@ -83,6 +84,7 @@ export class SelectVariationsComponent implements OnInit {
       if (res.succes){
         this.toast.open(res.succes, undefined, configToast )
         this.buttonDisabled = false
+        this.updateList.emit(true)
         return
       }
       

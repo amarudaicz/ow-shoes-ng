@@ -1,10 +1,6 @@
 <div class="container-form">
 
-  <form class="form-new-product" 
-    id="formInsertProduct" 
-    [formGroup] ="dataForm"
-    (submit)="sendForm()"
-    >
+  <form class="form-new-product" id="formInsertProduct" [formGroup]="dataForm" (submit)="sendForm()">
 
     <div class="inputs-left">
 
@@ -32,6 +28,32 @@
         <span matTextSuffix>.00</span>
       </mat-form-field>
 
+      <div *ngIf="dataForm.valid" class="container-preview-product">
+        
+        <span>Vista previa</span>
+        <div class="grid__tienda--producto preview-product">
+
+          <img *ngIf="base64Thumbnail" src="{{base64Thumbnail}}" alt="image product" />
+
+          <div class="info-product">
+            <a class="link-product">
+              <pre class="subtitle-product">{{ dataForm.controls['subtitle'].value }}</pre>
+
+              <span class="title-product">{{ dataForm.controls['title'].value }}</span>
+            </a>
+
+            <span class="price-product">{{ dataForm.controls['price'].value | currency }} </span>
+            <span *ngIf="dataForm.controls['price'].value" class="cuota-product">3 cuotas sin interes de <b> {{dataForm.controls['price'].value / 3 | currency }} </b> </span>
+          </div>
+
+          <div class="container-galery-preview">
+           <img *ngFor="let image of base64Galery" src="{{image}}" style="width: 50px !important;" alt="">
+          </div> 
+ 
+        </div>
+
+      </div>
+
     </div>
 
     <div class="textarea-rigth">
@@ -42,36 +64,39 @@
       </mat-form-field>
 
 
-     <div class="form-group"  matTooltip="Esta imagen sera la imagen principal del producto" [matTooltipPosition]="'above'">
-       <label>Cargar Imagen Thumbnail</label>
-       <input required (change)="capturarThumbnail($event)" type="file" formControlName="imageThumbnail"> 
-       <img *ngIf="base64Thumbnail" width="200px" style="display: inline-block;" [src]="base64Thumbnail" alt="">
-     </div>
+      <div class="form-group" matTooltip="Esta imagen sera la imagen principal del producto"
+        [matTooltipPosition]="'above'">
+        <label>Cargar Imagen Thumbnail</label>
+        <input required (change)="capturarThumbnail($event)" type="file" formControlName="imageThumbnail">
+        <img *ngIf="base64Thumbnail" width="100px" [src]="base64Thumbnail" alt="">
+      </div>
 
 
-      <div class="form-group"  matTooltip="Estas imagenes seran las imagenes de la galeria del producto"
-      [matTooltipPosition]="'above'">
+      <div class="form-group" matTooltip="Estas imagenes seran las imagenes de la galeria del producto"
+        [matTooltipPosition]="'above'">
         <label>Cargar Imagenes Galeria</label>
         <input required (change)="capturarGalery($event)" type="file" multiple formControlName="imagesGalery">
+
+        <div *ngIf="base64Galery" class="container-imagen">
+          <img *ngFor="let image of base64Galery" src="{{image}}" width="100px" alt="">
+        </div>
+
       </div>
 
-      <div *ngIf="imagesGaleryString" class="container-imagen">
-        <img *ngFor="let image of imagesGaleryString" src="{{image}}" style="display: inline-block;" width="150px" alt="">
-      </div>
-      
- 
+
+
     </div>
 
-    
+
 
     <div class="inputs-group">
 
-      <button [disabled]="dataForm.invalid || disableButton" mat-raised-button color="primary"> 
+      <button [disabled]="dataForm.invalid || disableButton" mat-raised-button color="primary">
         {{disableButton ? 'Cargando' : 'Guardar'}}
-      </button> 
+      </button>
 
     </div>
- 
+
   </form>
 
 </div>

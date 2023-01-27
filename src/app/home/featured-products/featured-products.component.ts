@@ -21,7 +21,7 @@ export class FeaturedProductsComponent implements OnInit {
     this.http.get(`${hostUrl}/products/get-all-products`).subscribe((res:any) =>{
       this.featuredProducts = res
 
-      this.featuredProducts =  this.featuredProducts?.splice(7, 20)
+      this.featuredProducts =  this.featuredProducts?.splice(0, 20)
       console.log(this.featuredProducts);
       
     })

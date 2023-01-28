@@ -11,7 +11,12 @@ export class CartUserService {
 
   cartState:boolean = false
 
+  cart:any[] = this.storage.getItem('cart_user') 
 
+
+  reloadCart(){
+    this.cart = this.storage.getItem('cart_user')
+  }
   
 
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { CartUserService } from 'src/app/services/cart-user.service';
 import { LocalStorageService } from 'src/app/services/localStorage/local-storage-service.service';
 import { ItemCartStorage } from '../../interfaces/itemCartStorage.interface';
 
@@ -16,7 +17,7 @@ export class SelectedProductComponent implements OnInit {
   } 
 
 
-  constructor(private storage:LocalStorageService){
+  constructor(private storage:LocalStorageService, private cartService:CartUserService){
 
     
   }
@@ -68,7 +69,6 @@ export class SelectedProductComponent implements OnInit {
   }
     
   processItemCart(item: ItemCartStorage) {
-
     const cartUser: ItemCartStorage[] = this.storage.getItem('cart_user');
 
     if (!cartUser) {
@@ -90,11 +90,13 @@ export class SelectedProductComponent implements OnInit {
       });
     } else {
       cartUser.push(item);
+      this.cartService.cart.push(item)
       localStorage.setItem('cart_user', JSON.stringify(cartUser));
     }
 
+
     this.storage.cart = cartUser
-    
+
   }
  
 

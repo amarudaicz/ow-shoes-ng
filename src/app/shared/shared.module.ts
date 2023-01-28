@@ -17,9 +17,9 @@ import {MatButtonModule} from '@angular/material/button';
     HeaderComponent,
     LoaderComponent,
     CartSlideComponent,
-    AlertDeleteItemCartDirective 
+    AlertDeleteItemCartDirective,
      
-  ],
+  ], 
   
   imports: [
     CommonModule,
@@ -33,7 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
   ],
   exports:[
     HeaderComponent,
-    LoaderComponent, 
+    LoaderComponent
 
   ] 
 

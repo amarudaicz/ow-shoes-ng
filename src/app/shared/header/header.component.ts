@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
 
   constructor(private route:Router, 
     private storage:LocalStorageService, 
-    private cartService:CartUserService, 
+    public cartService:CartUserService, 
     private toast:MatSnackBar)
   {}
 
@@ -62,9 +62,6 @@ export class HeaderComponent implements OnInit, AfterContentChecked {
     this.route.navigate(['/login'])
     
   }
-
-
-
 
   disableScroll() {
     let x = window.scrollX;

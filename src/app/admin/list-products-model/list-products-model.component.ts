@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
@@ -30,18 +30,17 @@ export class ListProductsModelComponent implements OnInit {
       console.log(res);
       const dataTable = new MatTableDataSource(res);
       this.dataSource = dataTable;
-      
     })
     
     
   }
-  
+   
  
-
+  
   dataSource:any
   
 
-  displayedColumns: string[] = ['id', 'title', 'price', 'subtitle'];
+  displayedColumns: string[] = ['id', 'title', 'subtitle','price' ];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement: any | null;
 
@@ -51,6 +50,17 @@ export class ListProductsModelComponent implements OnInit {
       this.dataSource.filter = filterValue.trim().toLowerCase();
     }
   }
- 
+
+
+
+  typeColumn(element:any){
+
+    if(typeof(element) === 'string') return '';
+    else if(element < 100) return '#'
+    else return '$'
+
+  }
+  
 }
+ 
  

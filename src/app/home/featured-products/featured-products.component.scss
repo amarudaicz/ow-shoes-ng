@@ -1,34 +1,43 @@
 @use '../../../assets/sass/mixins.scss' as m;
 @use '../../../assets/sass/variables.scss' as v;
 
-.tienda{
-    width: 100%;
-    margin: 0 auto;
 
+.swiper{
+    cursor:grab;
+}
+
+.slider-featured-products{
+    
     h3{ 
         font-size: 2em;
         text-align: center;
         text-transform: uppercase;        
+        margin: 50px 0 20px 0 ;
     }
 
-    padding:20px 0;
-}
+    padding: 0 0 100px 0;
 
-.grid__tienda{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    cursor: pointer;
 
 }
+
+.container-slider{
+
+
+}
+
+
 
 .grid__tienda--producto{
     width: 300px;
     display: flex;
     flex-direction: column;
     font-family: v.$sec;
-    
+    margin: 10px 5px 35px 5px;
+    cursor: grab;
+
+    &:active{
+        cursor: grabbing;
+    }
 
     img{
         width: 100%;
@@ -55,7 +64,7 @@
     font-size: 1rem;
     display: block;
     text-transform:uppercase;
-
+    
  
 }
 
@@ -64,9 +73,7 @@
 }
 
 .price-product{
-    margin: 0 10px 0 0;
-    display: block;
-
+    margin: 0 10px 0 0;    
 }
 
 .cuota-product{
@@ -82,13 +89,4 @@
         
     }
 
-}
-
-
-.container-galery-preview{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    padding:  0 10px;
 }

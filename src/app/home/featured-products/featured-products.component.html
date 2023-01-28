@@ -1,0 +1,68 @@
+<div class="slider-featured-products">
+  
+  <h3>
+    Destacados
+  </h3>
+
+  <div class="container-slider">
+
+    <swiper
+    class="swiper"
+  [config]="configSwiper"
+  (swiper)="onSwiper($event)"
+  (slideChange)="slideChange()"
+  >
+    
+    <div swiperSlide class="grid__tienda--producto" *ngFor="let p of featuredProducts" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}">
+
+      <img src={{p.thumbnail_image}} alt="image product"/>
+
+      <div class="info-product">
+        <a class="link-product" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}" href="" >
+          <pre class="subtitle-product">{{ p.subtitle }}</pre>
+
+          <span class="title-product">{{ p.title }}</span>
+        </a>
+
+        <span class="price-product">{{ p.price | currency }} </span>
+        <span class="cuota-product">3 cuotas de $11.999 sin interés</span>
+      </div>
+
+      <div class="block__inputs--tienda">
+    
+      </div>
+      
+    
+    </div>
+    
+
+
+      <ng-template swiperSlide *ngFor="let p of featuredProducts">
+
+        <div swiperSlide class="grid__tienda--producto" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}">
+
+          <img src={{p.thumbnail_image}} alt="image product"/>
+    
+          <div class="info-product">
+            <a class="link-product" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}" href="" >
+              <pre class="subtitle-product">{{ p.subtitle }}</pre>
+    
+              <span class="title-product">{{ p.title }}</span>
+            </a>
+    
+            <span class="price-product">{{ p.price | currency }} </span>
+            <span class="cuota-product">3 cuotas de $11.999 sin interés</span>
+          </div>
+    
+          <div class="block__inputs--tienda">
+        
+          </div>
+        </div>
+        
+      </ng-template>
+
+  </swiper>
+
+  </div>
+
+</div>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { restService } from '../../services/restService/rest-service.service'
 import {hostUrl} from "../../app.component";
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-latest-releases',
@@ -23,6 +22,8 @@ export class LatestReleasesComponent implements OnInit {
   getProducts(){
     this.rest.get(`${hostUrl}/products/get-all-products`).subscribe(res =>{
       this.lastestProducts = res
+
+      this.lastestProducts = this.lastestProducts.splice(0, 10)
     })
   }
 

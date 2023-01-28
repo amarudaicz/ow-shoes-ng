@@ -31,7 +31,7 @@
     .textarea-rigth {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        row-gap:15px;
     }
 }
 
@@ -45,4 +45,92 @@
 .form-control {
     height: 30px;
     padding: 5px;
+}
+
+
+.container-preview-product {
+    min-height: 350px;
+}
+
+
+.grid__tienda--producto {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    font-family: v.$sec;
+
+
+    img {
+        width: 100%;
+    }
+
+    &:hover {
+        box-shadow: #878787 0px 0px 5px 0.5px
+    }
+
+}
+
+
+.info-product{
+    margin-top: 15px;
+    text-align: start; 
+    padding: 0 10px 10px 10px;
+    overflow: hidden;
+
+
+}
+
+
+.title-product{
+    margin: 0 0 6px 0;
+    font-size: 1rem;
+    display: block;
+    text-transform:uppercase;
+
+ 
+}
+
+.subtitle-product{
+    color: #B5B5B5;
+}
+
+.price-product{
+    margin: 0 10px 0 0;    
+    display: block;
+}
+
+.cuota-product{
+    font-size: 14px;
+
+}
+
+.link-product{
+    color:#1E1B17;
+    cursor:pointer;
+    &:hover{
+        text-decoration: underline;
+        
+    }
+
+}
+
+
+.container-galery-preview{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding:  0 10px;
+    flex-wrap: wrap;
+
+}
+
+.container-preview-product{
+
+}
+
+.preview-product{
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: #878787 0px 0px 5px 0.5px
+    
 }

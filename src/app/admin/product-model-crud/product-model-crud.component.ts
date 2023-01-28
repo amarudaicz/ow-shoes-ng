@@ -10,6 +10,9 @@ export class ProductModelCrudComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+ 
 
 }

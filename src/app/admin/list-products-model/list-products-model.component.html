@@ -8,8 +8,8 @@
   class="mat-elevation-z8">
 <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
 <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-<td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-</ng-container>
+<td class="row" mat-cell *matCellDef="let element"> {{typeColumn(element[column]) === '$' ? (element[column]|currency) : element[column] }} </td>
+</ng-container>  
 <ng-container matColumnDef="expand">
 <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
 <td mat-cell *matCellDef="let element">
@@ -17,7 +17,7 @@
    <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
    <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
  </button>
-</td>
+</td> 
 </ng-container>
 
 <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
@@ -44,13 +44,13 @@
     <mat-accordion>
     
      
-      <app-form-edit-product-model [id]="element.id" ></app-form-edit-product-model>
+      <app-form-edit-product-model (updateList)="ngOnInit()" [id]="element.id" [product]="element" ></app-form-edit-product-model>
 
 
-      <app-select-variations [id]="element.id"></app-select-variations>
-
+      <app-select-variations  [id]="element.id"></app-select-variations>
+ 
       
-      <app-list-products-variants [id]="element.id"></app-list-products-variants>
+      <app-list-products-variants  [id]="element.id"></app-list-products-variants>
 
     </mat-accordion>
     

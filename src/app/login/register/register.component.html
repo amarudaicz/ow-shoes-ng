@@ -42,10 +42,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Ingresa una Contraseña</mat-label>
-            <input formControlName="password" matInput required [type]="hidePassword ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
-              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+            <input formControlName="password" type="password" matInput required>
             <mat-error *ngIf="processInput('password')">Ingresa una contraseña 8 caracteres minimo</mat-error>
           </mat-form-field> 
 

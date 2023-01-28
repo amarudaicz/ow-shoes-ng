@@ -16,12 +16,6 @@ export class ListProductsVariantsComponent  implements OnInit {
       
       this.data = res
     })
-
-
-    this.http.delete(hostUrl + '/admin/delete-product/256').subscribe((res:any)=>{
-      console.log(res);
-    })
-    
   }
 
 
@@ -29,7 +23,8 @@ export class ListProductsVariantsComponent  implements OnInit {
 
   col: string[] = ['id', 'sku', 'stock', 'price', 'size', 'color'];
 
-  data:any[] = [];
+  data:any[] = [];  
+  
 
 
 }

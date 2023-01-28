@@ -10,13 +10,15 @@ import {hostUrl} from "../../app.component";
 export class LatestReleasesComponent implements OnInit {
   
   constructor(private rest: restService){}
-  lastestProducts:any
-
-
+  
+  
   ngOnInit(): void {
+    this.cardLoader.length = 10
     this.getProducts()
   }
   
+  cardLoader:any[] = []
+  lastestProducts?:any
   
   
   getProducts(){

@@ -77,6 +77,7 @@ export class CartSlideComponent implements OnInit {
   //METHODS
   private getCart() {
     const cart:ItemCartStorage[] = this.storage.getItem('cart_user')
+    console.log(cart)
     this.cartUser = cart
 
     if (!cart) {
@@ -85,12 +86,12 @@ export class CartSlideComponent implements OnInit {
     }
 
     if(cart.length !== 0) 
-    this.totalCart = cart.map(e => e.price).reduce((prev, curr)=> prev + curr)
+    this.totalCart = cart.map(e => e.price * e.quantity).reduce((prev, curr)=> prev + curr)
     else
     this.totalCart = 0
   }
 
-
+  
 
 
   public deleteItemCart(id: number, mainDiv:HTMLDivElement, alertItem:HTMLDivElement) {

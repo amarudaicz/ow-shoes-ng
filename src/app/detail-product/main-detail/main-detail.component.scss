@@ -1,92 +1,73 @@
-@use '../../../assets/sass/mixins.scss' as m;
-@use '../../../assets/sass/variables.scss' as v;
+@use "../../../assets/sass/mixins.scss" as m;
+@use "../../../assets/sass/variables.scss" as v;
 
-.content{
-
+.content {
+  padding: 0 0 150px 0;
 }
 
-.separator-top{
-    width: 60px;
-    height: 4px;
-    margin: 10px auto;
-    background: #000;
-    border: none;
-    border-radius: 5px;
-
-
-}
- 
-
-.breadscrums{
-
+.separator-top {
+  width: 60px;
+  height: 4px;
+  margin: 10px auto;
+  background: #000;
+  border: none;
+  border-radius: 5px;
 }
 
-.container-product{
-    padding: 0 10px;
-    margin-top: 20px;
-
-    @include m.tablet{
-
-    }
+.breadscrums {
 }
 
-.container-data{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.container-product {
+  padding: 0 10px;
+  margin-top: 20px;
 
-    @include m.tablet{
-        flex-direction:row
-    }
-
+  @include m.tablet {
+  }
 }
 
-.container-info{
-    @include m.tablet{
-        width: 40%;
+.container-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    }
-
+  @include m.tablet {
+    flex-direction: row;
+  }
 }
 
-.container-title-product{
-
+.container-info {
+  @include m.tablet {
+    width: 40%;
+  }
 }
 
-.title-product{
-    font-size: 50px;
-    margin: 5px 0 10px 0;
+.container-title-product {
 }
 
-.subtitle-product{
-
+.title-product {
+  font-size: 50px;
+  margin: 5px 0 10px 0;
 }
 
-.price-product{
-
+.subtitle-product {
 }
 
-.separator-title-swatches{
-    margin: 20px 0;
-    
+.price-product {
 }
 
-.container-swatches{
-    p{
-        font-size: 14px;
-    }
+.separator-title-swatches {
+  margin: 20px 0;
 }
 
-.container-images{
-    margin: 0 0 20px 0;
-    @include m.tablet{
-        width: 50%;
-
-    }
+.container-swatches {
+  p {
+    font-size: 14px;
+  }
 }
 
-
-
-
-
-
+.container-images {
+  margin: 0 0 20px 0;
+  @include m.tablet {
+    width: 50%;
+  }
+}

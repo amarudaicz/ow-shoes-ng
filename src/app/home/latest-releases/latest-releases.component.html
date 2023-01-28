@@ -5,8 +5,23 @@
 <div class="tienda">
   <h3 class="ult-lanzamientos">Ultimos lanzamientos</h3>
 
-  <section class="grid__tienda">
-    
+  <div class="grid__tienda" *ngIf="!lastestProducts">
+
+    <div class="app" *ngFor="let card of cardLoader">
+      <div class="card">
+        <div class="card__image"></div>
+        <div class="card__content">
+          <h2 class="loader_h2"></h2>
+          <p class="loader_p"></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section class="grid__tienda" *ngIf="lastestProducts">
+
+
     <div class="grid__tienda--producto" *ngFor="let p of lastestProducts" [routerLink]="['/detail-product']" [queryParams]="{id:p.id}">
 
       <img src={{p.thumbnail_image}} alt="image product"/>
@@ -18,16 +33,13 @@
           <span class="title-product">{{ p.title }}</span>
         </a>
 
-        <span class="price-product">{{ p.price | currency }} </span>
-        <span class="cuota-product">3 cuotas de $11.999 sin interés</span>
+        <span class="price-offer">{{p.price_offer | currency}}</span>
+        <span class="price-product">{{ p.price | currency }} </span> 
+        <span class="cuota-product">3 cuotas sin interés de {{p.price_offer / 3 |currency}} </span>
       </div>
 
-      <div class="container-galery-preview">
-        
-       </div> 
-
-      
     </div>
   </section>
 </div>
 
+ 
